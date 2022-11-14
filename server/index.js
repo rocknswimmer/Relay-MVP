@@ -8,6 +8,10 @@ app.use(express.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.get('/runners', (req, res) => {
+  res.send('hitting server');
+});
+
 
 
 app.listen(3003);
