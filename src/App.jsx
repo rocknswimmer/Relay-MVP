@@ -1,9 +1,13 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
+
+  useEffect(() => {
+    getRunnerInfo();
+  }, []);
 
   const displayRunnerInfo = () => {
     setShowRunners(!showRunners);
