@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS runners;
+
+CREATE TABLE runners (
+  id SERIAL,
+  runner VARCHAR(100) NOT NULL DEFAULT NULL,
+  phone VARCHAR(10)
+);
+

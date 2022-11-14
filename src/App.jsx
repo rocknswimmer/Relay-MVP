@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
+  const [runners, setRunners] = useState([]);
 
   useEffect(() => {
     getRunnerInfo();
@@ -11,12 +12,13 @@ const App = () => {
 
   const displayRunnerInfo = () => {
     setShowRunners(!showRunners);
+    console.log(runners);
   };
 
   const getRunnerInfo = () => {
     axios.get('/runners')
       .then((res) => {
-        console.log(res);
+        setRunners(res.data);
       })
       .catch((err) => {
         console.log('error getting runner info: ', err);
