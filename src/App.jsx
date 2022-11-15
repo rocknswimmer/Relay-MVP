@@ -40,7 +40,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Welcome to the Virtual Relay</h1>
+      <h1>Virtual Relay</h1>
       <button onClick={displayRunnerInfo}>Runner Info</button>
       {showRunners && <Modal
       close={() => { displayRunnerInfo(); }}
@@ -61,6 +61,7 @@ const App = () => {
         </div>
       }
       />}
+      <h2>Race Details</h2>
        <div>
           {legs.map((leg, i) => {
             return (<Accordion
@@ -69,7 +70,7 @@ const App = () => {
               content={
                 <div>
                 <h1>{leg.runner}</h1>
-                <h2>{leg.distance}</h2>
+                <h2>{`${leg.distance} miles`}</h2>
                 </div>
               }
             />)
