@@ -49,10 +49,8 @@ const App = () => {
   };
 
   const updateStatus = (leg) => {
-    console.log(leg);
     axios.put('/:leg/complete', {'leg': leg})
       .then((res) => {
-        console.log('updated: ', leg, res);
         getLegInfo();
       })
       .catch((err) => {

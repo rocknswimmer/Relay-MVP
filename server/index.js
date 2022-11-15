@@ -44,7 +44,6 @@ app.put('/:leg/complete', (req, res) => {
       console.log('error marknig leg complete: ', err);
       throw err;
     }
-    console.log(data.rows);
     res.send('updated leg status');
   })
 
