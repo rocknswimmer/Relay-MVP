@@ -9,6 +9,7 @@ const App = () => {
   const [showRunners, setShowRunners] = useState(false);
   const [runners, setRunners] = useState([]);
   const [legs, setLegs] = useState([]);
+  const [completeLegs, setCompleteLegs] = useState([]);
 
   useEffect(() => {
     getRunnerInfo();
@@ -43,6 +44,7 @@ const App = () => {
           return 0;
         })
         setLegs(sorted);
+        setCompleteLegs(sorted.filter((leg) => { return leg.complete }))
       })
       .catch((err) => {
         console.log('error getting leg info: ', err);
@@ -98,7 +100,7 @@ const App = () => {
             /></div>)
           })}
         </div>
-        <ProgressBar bgcolor={"#ef6c00"} completed={53} />
+        <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
     </div>
     );
   };
