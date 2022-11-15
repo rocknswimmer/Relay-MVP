@@ -8,9 +8,14 @@ import {useState} from 'react';
 const RunnersInfo = (props) => {
   const {runners, close, update} = props;
   const [edit, setEdit] = useState(false);
+  const [add, setAdd] = useState(false);
 
   const editRunner = () => {
     setEdit(!edit);
+  };
+
+  const addRunner = () => {
+    setAdd(!add);
   };
 
   return (
@@ -26,13 +31,14 @@ const RunnersInfo = (props) => {
                 <div>
                 <h1>{runner.runner}</h1>
                 <h2>{runner.phone}</h2>
-                <button onClick={setEdit}>Edit Runner</button>
-                {edit && <RunnerInfo close={ () => { setEdit(); }}/>}
+                <button onClick={editRunner}>Edit Runner</button>
+                {edit && <RunnerInfo close={ () => { editRunner(); }} edit={edit}/>}
                 </div>
               }
             />)
           })}
-          <button>Add Runner</button>
+          <button onClick={addRunner}>Add Runner</button>
+          {add && <RunnerInfo close={ () => { addRunner(); }} edit={edit}/>}
         </div>
       }
       />

@@ -4,7 +4,7 @@ import axios from 'axios';
 import {useState} from 'react';
 
 const RunnerInfo = (props) => {
-  const {close} = props;
+  const {close, edit} = props;
 
   const updateRunner = () => {
     axios.put('/runner', {})
@@ -20,7 +20,7 @@ const RunnerInfo = (props) => {
   return (
     <Modal
     close={close}
-    content={'runner info form'}
+    content={'runner info form' + edit}
     />
   )
 }
