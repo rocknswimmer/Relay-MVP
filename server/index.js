@@ -37,6 +37,19 @@ app.get('/legs', (req, res) => {
   })
 });
 
+app.put('/:leg/complete', (req, res) => {
+
+  pool.query('update legs set complete = not complete where id = $1 returning *;', [req.body.leg], (err, data) => {
+    if (err) {
+      console.log('error marknig leg complete: ', err);
+      throw err;
+    }
+    console.log(data.rows);
+    res.send('updated leg status');
+  })
+
+});
+
 
 
 app.listen(3003);

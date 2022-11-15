@@ -48,6 +48,18 @@ const App = () => {
       })
   };
 
+  const updateStatus = (leg) => {
+    console.log(leg);
+    axios.put('/:leg/complete', {'leg': leg})
+      .then((res) => {
+        console.log('updated: ', leg, res);
+        getLegInfo();
+      })
+      .catch((err) => {
+        console.log('error updating leg completion');
+      })
+  };
+
   return (
     <div>
       <h1>Virtual Relay</h1>
@@ -59,7 +71,7 @@ const App = () => {
           {runners.map((runner, i) => {
             return (<Accordion
               key={i}
-              title={'Runner ' + runner.id}
+              title={' Runner ' + runner.id}
               content={
                 <div>
                 <h1>{runner.runner}</h1>
@@ -74,17 +86,17 @@ const App = () => {
       <h2>Race Details</h2>
        <div>
           {legs.map((leg, i) => {
-            return (<Accordion
+            return (<div className="accordion-fake-title"><button onClick={() => { updateStatus(leg.id); }}>complete</button><Accordion
               key={i}
               complete={leg.complete}
-              title={`Leg ${leg.id}  `}
+              title={<div>{` Leg ${leg.id}`}</div>}
               content={
                 <div>
                 <h1>{leg.runner}</h1>
                 <h2>{`${leg.distance} miles`}</h2>
                 </div>
               }
-            />)
+            /></div>)
           })}
         </div>
     </div>
