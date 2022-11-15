@@ -31,7 +31,17 @@ const App = () => {
   const getLegInfo = () => {
     axios.get('/legs')
       .then((res) => {
-        setLegs(res.data);
+        let sorted = res.data.sort(function compareFn(a, b) {
+          if (a.id < b.id) {
+            return -1;
+          }
+          if (a.id > b.id) {
+            return 1;
+          }
+          // a must be equal to b
+          return 0;
+        })
+        setLegs(sorted);
       })
       .catch((err) => {
         console.log('error getting leg info: ', err);
