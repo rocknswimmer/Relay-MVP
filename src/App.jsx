@@ -86,8 +86,8 @@ const App = () => {
       <h2>Race Details</h2>
        <div>
           {legs.map((leg, i) => {
-            return (<div className="accordion-fake-title"><button onClick={() => { updateStatus(leg.id); }}>complete</button><Accordion
-              key={i}
+            return (<div className="accordion-fake-title" key={i}><button onClick={() => { updateStatus(leg.id); }}>complete</button><Accordion
+
               complete={leg.complete}
               title={<div>{` Leg ${leg.id}`}</div>}
               content={
