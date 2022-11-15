@@ -5,6 +5,7 @@ import Modal from './modal.js';
 import Accordion from './accordion.js';
 import ProgressBar from './progress.js';
 import RunnersInfo from './runners.js';
+import Legs from './legs.js';
 
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
@@ -68,22 +69,8 @@ const App = () => {
       <button onClick={displayRunnerInfo}>Runner Info</button>
       {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }}/>}
       <h2>Race Details</h2>
-       <div>
-          {legs.map((leg, i) => {
-            return (<div className="accordion-fake-title" key={i}><button onClick={() => { updateStatus(leg.id); }}>complete</button><Accordion
-
-              complete={leg.complete}
-              title={<div>{` Leg ${leg.id}`}</div>}
-              content={
-                <div>
-                <h1>{leg.runner}</h1>
-                <h2>{`${leg.distance} miles`}</h2>
-                </div>
-              }
-            /></div>)
-          })}
-        </div>
-        <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
+      <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} />
+      <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
     </div>
     );
   };
