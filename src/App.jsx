@@ -7,9 +7,11 @@ import Accordion from './accordion.js';
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
   const [runners, setRunners] = useState([]);
+  const [legs, setLegs] = useState([]);
 
   useEffect(() => {
     getRunnerInfo();
+    getLegInfo();
   }, []);
 
   const displayRunnerInfo = () => {
@@ -26,6 +28,15 @@ const App = () => {
       })
   };
 
+  const getLegInfo = () => {
+    axios.get('/legs')
+      .then((res) => {
+        setLegs(res.data);
+      })
+      .catch((err) => {
+        console.log('error getting leg info: ', err);
+      })
+  };
 
   return (
     <div>
@@ -50,7 +61,20 @@ const App = () => {
         </div>
       }
       />}
-      race legs to go here
+       <div>
+          {legs.map((leg, i) => {
+            return (<Accordion
+              key={i}
+              title={'Leg ' + leg.id}
+              content={
+                <div>
+                <h1>{leg.runner}</h1>
+                <h2>{leg.distance}</h2>
+                </div>
+              }
+            />)
+          })}
+        </div>
     </div>
     );
   };
