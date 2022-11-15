@@ -32,13 +32,13 @@ const RunnersInfo = (props) => {
                 <h1>{runner.runner}</h1>
                 <h2>{runner.phone}</h2>
                 <button onClick={editRunner}>Edit Runner</button>
-                {edit && <RunnerInfo close={ () => { editRunner(); }} edit={edit}/>}
+                {edit && <RunnerInfo close={ () => { editRunner(); }} edit={edit} update={update}/>}
                 </div>
               }
             />)
           })}
           <button onClick={addRunner}>Add Runner</button>
-          {add && <RunnerInfo close={ () => { addRunner(); }} edit={edit}/>}
+          {add && <RunnerInfo close={ () => { addRunner(); }} edit={edit} update={update}/>}
         </div>
       }
       />
