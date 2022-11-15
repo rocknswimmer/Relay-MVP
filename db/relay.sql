@@ -11,7 +11,8 @@ CREATE TABLE runners (
 CREATE TABLE legs (
   id SERIAL PRIMARY KEY,
   runner INTEGER NOT NULL DEFAULT NULL REFERENCES runners (id),
-  distance REAL NOT NULL DEFAULT NULL
+  distance REAL NOT NULL DEFAULT NULL,
+  complete BOOLEAN NOT NULL DEFAULT false
 );
 
 insert into runners (runner, phone, pace) values ('And e', '5554567890', 10) returning *;
