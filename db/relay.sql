@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS legs;
 DROP TABLE IF EXISTS runners;
 
 CREATE TABLE runners (
