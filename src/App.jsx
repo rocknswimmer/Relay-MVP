@@ -37,6 +37,7 @@ const App = () => {
         <div>
           {runners.map((runner, i) => {
             return (<Accordion
+              key={i}
               title={'Runner ' + runner.id}
               content={
                 <div>
