@@ -11,3 +11,7 @@
   background-color: #46e8fa;
   color: black;
 }
+
+.complete {
+  background-color: green;
+}

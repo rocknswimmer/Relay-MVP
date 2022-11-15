@@ -66,7 +66,8 @@ const App = () => {
           {legs.map((leg, i) => {
             return (<Accordion
               key={i}
-              title={`Leg ${leg.id}  |  ${leg.complete}`}
+              complete={leg.complete}
+              title={`Leg ${leg.id}  `}
               content={
                 <div>
                 <h1>{leg.runner}</h1>
