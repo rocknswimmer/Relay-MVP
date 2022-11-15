@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {useState} from 'react';
-// import './accordion.css';
+import '../public/accordion.css';
 
 const Accordion = ({title, content}) => {
   const [isActive, setIsActive] = useState(false);
