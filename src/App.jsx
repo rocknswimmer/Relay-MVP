@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import Modal from './modal.js';
 import Accordion from './accordion.js';
+import ProgressBar from './progress.js';
 
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
@@ -97,6 +98,7 @@ const App = () => {
             /></div>)
           })}
         </div>
+        <ProgressBar bgcolor={"#ef6c00"} completed={53} />
     </div>
     );
   };
