@@ -4,6 +4,7 @@ import axios from 'axios';
 import Modal from './modal.js';
 import Accordion from './accordion.js';
 import ProgressBar from './progress.js';
+import RunnersInfo from './runners.js';
 
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
@@ -65,25 +66,7 @@ const App = () => {
     <div>
       <h1>Virtual Relay</h1>
       <button onClick={displayRunnerInfo}>Runner Info</button>
-      {showRunners && <Modal
-      close={() => { displayRunnerInfo(); }}
-      content={
-        <div>
-          {runners.map((runner, i) => {
-            return (<Accordion
-              key={i}
-              title={' Runner ' + runner.id}
-              content={
-                <div>
-                <h1>{runner.runner}</h1>
-                <h2>{runner.phone}</h2>
-                </div>
-              }
-            />)
-          })}
-        </div>
-      }
-      />}
+      {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }}/>}
       <h2>Race Details</h2>
        <div>
           {legs.map((leg, i) => {
