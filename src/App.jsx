@@ -33,7 +33,21 @@ const App = () => {
       <button onClick={displayRunnerInfo}>Runner Info</button>
       {showRunners && <Modal
       close={() => { displayRunnerInfo(); }}
-      content={'here'}
+      content={
+        <div>
+          {runners.map((runner, i) => {
+            return (<Accordion
+              title={'Runner ' + runner.id}
+              content={
+                <div>
+                <h1>{runner.runner}</h1>
+                <h2>{runner.phone}</h2>
+                </div>
+              }
+            />)
+          })}
+        </div>
+      }
       />}
     </div>
     );
