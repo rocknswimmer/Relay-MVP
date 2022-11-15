@@ -14,3 +14,6 @@ CREATE TABLE legs (
   distance REAL NOT NULL DEFAULT NULL
 );
 
+insert into runners (runner, phone, pace) values ('And e', '5554567890', 10) returning *;
+insert into runners (runner, phone, pace) values ('And 2', '5554567891', 10.5) returning *;
+insert into runners (runner, phone, pace) values ('And 3', '5554567892', 10.25) returning *;
