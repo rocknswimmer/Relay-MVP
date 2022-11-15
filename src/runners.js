@@ -3,7 +3,7 @@ import Modal from './modal.js';
 import Accordion from './accordion.js';
 
 const RunnersInfo = (props) => {
-  const {runners, close} = props;
+  const {runners, close, update} = props;
 
 
   return (
@@ -19,10 +19,12 @@ const RunnersInfo = (props) => {
                 <div>
                 <h1>{runner.runner}</h1>
                 <h2>{runner.phone}</h2>
+                <button>Edit Runner</button>
                 </div>
               }
             />)
           })}
+          <button>Add Runner</button>
         </div>
       }
       />

@@ -1,8 +1,8 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import Modal from './modal.js';
-import Accordion from './accordion.js';
+// import Modal from './modal.js';
+// import Accordion from './accordion.js';
 import ProgressBar from './progress.js';
 import RunnersInfo from './runners.js';
 import Legs from './legs.js';
@@ -42,7 +42,6 @@ const App = () => {
           if (a.id > b.id) {
             return 1;
           }
-          // a must be equal to b
           return 0;
         })
         setLegs(sorted);
@@ -67,7 +66,7 @@ const App = () => {
     <div>
       <h1>Virtual Relay</h1>
       <button onClick={displayRunnerInfo}>Runner Info</button>
-      {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }}/>}
+      {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }} update={() => { getRunnerInfo(); }} />}
       <h2>Race Details</h2>
       <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} />
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
