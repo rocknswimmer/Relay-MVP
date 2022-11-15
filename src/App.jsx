@@ -14,7 +14,6 @@ const App = () => {
 
   const displayRunnerInfo = () => {
     setShowRunners(!showRunners);
-    console.log(runners);
   };
 
   const getRunnerInfo = () => {
@@ -32,7 +31,10 @@ const App = () => {
     <div>
       <h1>Welcome to the Virtual Relay</h1>
       <button onClick={displayRunnerInfo}>Runner Info</button>
-      {showRunners && <div>modal here</div>}
+      {showRunners && <Modal
+      close={() => { displayRunnerInfo(); }}
+      content={'here'}
+      />}
     </div>
     );
   };
