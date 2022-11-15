@@ -20,7 +20,7 @@ const RunnerInfo = (props) => {
   return (
     <Modal
     close={close}
-    content={'runner info form' + edit}
+    content={ edit ? 'edit runner info' : 'add runner'}
     />
   )
 }

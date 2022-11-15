@@ -45,5 +45,4 @@ const RunnersInfo = (props) => {
   )
 }
 
-
 export default RunnersInfo;
