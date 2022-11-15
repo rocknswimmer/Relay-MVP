@@ -1,6 +1,8 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
+import Modal from './modal.js';
+import Accordion from './accordion.js';
 
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
