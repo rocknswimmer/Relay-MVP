@@ -28,7 +28,7 @@ app.get('/runners', (req, res) => {
 });
 
 app.get('/legs', (req, res) => {
-  pool.query('select id, (select runner from runners where id = legs.runner) as runner, distance, complete from legs', (err, data) => {
+  pool.query('select id, (select runner from runners where id = legs.runner) as runner, distance, complete, start_time, end_time, dif from legs', (err, data) => {
     if (err) {
       console.log('error retrieving legs from db: ', err);
       throw err;

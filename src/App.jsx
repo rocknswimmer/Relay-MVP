@@ -93,15 +93,15 @@ const App = () => {
 
 
       <h2>Race Details</h2>
-      {/* <Accordion
-      title={'Leg # | Start | Finish | Difference From Expected'}
+      <Accordion
+      title={'Leg # | Start | Finish | Race Difference'}
       content={'couldnt think of a better way to do the break down quickly'}
-      /> */}
+      />
 
       <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} update={() => { getLegInfo();}}
       organizer={organizer} runnerView={runner} />
 
-      <h2>Whose Veiwing?</h2>
+      <h2>Who Is Veiwing?</h2>
       <button onClick={runnerViewing}>Runner</button>
       <button onClick={organizerViewing}>Organizer</button>
     </div>

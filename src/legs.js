@@ -27,7 +27,7 @@ const Legs = (props) => {
       {legs.map((leg, i) => {
         return (<div className="accordion-fake-title" key={i}>{marking && <button onClick={() => { completed(leg.id); }}>complete</button>}<Accordion
           complete={leg.complete}
-          title={<div>{` Leg ${leg.id}`}</div>}
+          title={<div>{` Leg ${leg.id} | ${leg.start_time} | ${leg.end_time} | ${leg.dif}`}</div>}
           content={
             <div>
               <h1>{leg.runner}</h1>
