@@ -77,8 +77,8 @@ const App = () => {
       <button onClick={displayRunnerInfo}>Runner Info</button>
       {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }} update={() => { getRunnerInfo(); getLegInfo();}} />}
       <h2>Race Details</h2>
-      <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} />
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
+      <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} />
     </div>
     );
   };
