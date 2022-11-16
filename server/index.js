@@ -49,6 +49,19 @@ app.put('/:leg/complete', (req, res) => {
 
 });
 
+app.put('/runner', (req, res) => {
+  const {runner, phone, pace, runnerID} = req.body;
+
+  pool.query('update runners set runner = $1, phone = $2, pace = $3  where id = $4 returning *;', [runner, phone, pace, runnerID], (err, data) => {
+    if (err) {
+      console.log('error updating runner info: ', err);
+      throw err;
+    }
+    res.send('updated runner info');
+  })
+
+});
+
 
 
 app.listen(3003);

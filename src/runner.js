@@ -4,7 +4,7 @@ import axios from 'axios';
 import {useState} from 'react';
 
 const RunnerInfo = (props) => {
-  const {close, edit, update} = props;
+  const {close, edit, update, runnerID} = props;
   const [runner, setRunner] = useState('');
   const [phone, setPhone] = useState('');
   const [pace, setPace] = useState('');
@@ -22,17 +22,14 @@ const RunnerInfo = (props) => {
   };
 
   const updateRunner = () => {
-    // axios.put('/runner', {})
-    //   .then((res) => {
-    //     update();
-    //     close();
-    //   })
-    //   .catch((err) => {
-    //     console.log('error updating runner info');
-    //   })
-    console.log('would update runner', runner, phone, pace);
-    update();
-    close();
+    axios.put('/runner', {runner: runner, phone: phone, pace: pace, runnerID: runnerID})
+      .then((res) => {
+        update();
+        close();
+      })
+      .catch((err) => {
+        console.log('error updating runner info');
+      })
   };
 
   const addRunner = () => {
@@ -40,8 +37,6 @@ const RunnerInfo = (props) => {
     update();
     close();
   }
-
-
 
   return (
     <Modal

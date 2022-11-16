@@ -25,7 +25,16 @@ const App = () => {
   const getRunnerInfo = () => {
     axios.get('/runners')
       .then((res) => {
-        setRunners(res.data);
+        let sorted = res.data.sort(function compareFn(a, b) {
+          if (a.id < b.id) {
+            return -1;
+          }
+          if (a.id > b.id) {
+            return 1;
+          }
+          return 0;
+        })
+        setRunners(sorted);
       })
       .catch((err) => {
         console.log('error getting runner info: ', err);
@@ -66,7 +75,7 @@ const App = () => {
     <div>
       <h1>Virtual Relay</h1>
       <button onClick={displayRunnerInfo}>Runner Info</button>
-      {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }} update={() => { getRunnerInfo(); }} />}
+      {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }} update={() => { getRunnerInfo(); getLegInfo();}} />}
       <h2>Race Details</h2>
       <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} />
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />

@@ -32,7 +32,7 @@ const RunnersInfo = (props) => {
                 <h1>{runner.runner}</h1>
                 <h2>{runner.phone}</h2>
                 <button onClick={editRunner}>Edit Runner</button>
-                {edit && <RunnerInfo close={ () => { editRunner(); }} edit={edit} update={update}/>}
+                {edit && <RunnerInfo close={ () => { editRunner(); }} edit={edit} update={update} runnerID={runner.id}/>}
                 </div>
               }
             />)
