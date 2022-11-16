@@ -15,10 +15,12 @@ const Legs = (props) => {
             <div>
               <h1>{leg.runner}</h1>
               <h2>{`${leg.distance} miles`}</h2>
+              <button>Edit Leg</button>
             </div>
           }
         /></div>)
       })}
+      <button>Add a New Leg</button>
     </div>
 
   )

@@ -15,7 +15,8 @@
 .accordion-item {
   max-width: 80vw;
   min-width: 50vw;
-  background-color: #46e8fa;
+  background-color: #126ed8;
+  /* background-color: #46e8fa; */
   color: black;
 }
 
