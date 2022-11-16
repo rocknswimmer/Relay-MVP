@@ -33,9 +33,14 @@ const RunnerInfo = (props) => {
   };
 
   const addRunner = () => {
-    console.log('would add new runner', runner, phone, pace);
-    update();
-    close();
+    axios.post('/runner/new', {runner: runner, phone: phone, pace: pace})
+      .then((res) => {
+        update();
+        close();
+      })
+      .catch((err) => {
+        console.log('error updating runner info');
+      })
   }
 
   return (

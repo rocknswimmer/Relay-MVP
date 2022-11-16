@@ -62,6 +62,17 @@ app.put('/runner', (req, res) => {
 
 });
 
+app.post('/runner/new', (req, res) => {
+  const {runner, phone, pace} = req.body;
+  pool.query('insert into runners (runner, phone, pace) values ($1, $2, $3) returning *;', [runner, phone, pace], (err, data) => {
+    if (err) {
+      console.log('error adding runner: ', err);
+      throw err;
+    }
+    res.send('added new runner');
+  })
+})
+
 
 
 app.listen(3003);
