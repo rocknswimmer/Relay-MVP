@@ -4,7 +4,7 @@ import LegForm from './leg.js';
 import {useState} from 'react';
 
 const Legs = (props) => {
-  const {legs, completed, update} = props;
+  const {legs, completed, update, organizer, runnerView} = props;
   const [edit, setEdit] = useState(false);
   const [add, setAdd] = useState(false);
   const [marking, setMarking] = useState(false);
@@ -32,14 +32,14 @@ const Legs = (props) => {
             <div>
               <h1>{leg.runner}</h1>
               <h2>{`${leg.distance} miles`}</h2>
-              <button onClick={editLeg}>Edit Leg</button>
+              {organizer && <button onClick={editLeg}>Edit Leg</button>}
               {edit && <LegForm close={ () => { editLeg(); }} edit={edit} update={update} legID={leg.id} />}
             </div>
           }
         /></div>)
       })}
-      <button onClick={addLeg}>Add a New Leg</button>
-      <button onClick={startMarking}>Mark Leg Complete</button>
+      {organizer && <button onClick={addLeg}>Add a New Leg</button>}
+      {(organizer || runnerView) && <button onClick={startMarking}>Mark Leg Complete</button>}
       {add && <LegForm close={ () => { addLeg(); }} edit={edit} update={update} />}
     </div>
 

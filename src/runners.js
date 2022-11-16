@@ -5,7 +5,7 @@ import RunnerInfo from './runner.js';
 import {useState} from 'react';
 
 const RunnersInfo = (props) => {
-  const {runners, close, update} = props;
+  const {runners, close, update, organizer} = props;
   const [edit, setEdit] = useState(false);
   const [add, setAdd] = useState(false);
 
@@ -29,13 +29,13 @@ const RunnersInfo = (props) => {
               content={
                 <div>
                 <h2>{runner.phone}</h2>
-                <button onClick={editRunner}>Edit Runner</button>
+                {organizer && <button onClick={editRunner}>Edit Runner</button>}
                 {edit && <RunnerInfo close={ () => { editRunner(); }} edit={edit} update={update} runnerID={runner.id}/>}
                 </div>
               }
             />)
           })}
-          <button onClick={addRunner}>Add Runner</button>
+          {organizer && <button onClick={addRunner}>Add Runner</button>}
           {add && <RunnerInfo close={ () => { addRunner(); }} edit={edit} update={update}/>}
         </div>
       }

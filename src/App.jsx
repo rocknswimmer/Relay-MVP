@@ -13,6 +13,16 @@ const App = () => {
   const [runners, setRunners] = useState([]);
   const [legs, setLegs] = useState([]);
   const [completeLegs, setCompleteLegs] = useState([]);
+  const [runner, setRunner] = useState(false);
+  const [organizer, setOrganizer] = useState(false);
+
+  const runnerViewing = () => {
+    setRunner(!runner);
+  };
+
+  const organizerViewing = () => {
+    setOrganizer(!organizer);
+  };
 
   useEffect(() => {
     getRunnerInfo();
@@ -75,16 +85,25 @@ const App = () => {
   return (
     <div>
       <h1>Virtual Relay</h1>
-      <button onClick={displayRunnerInfo}>Runner Info</button>
-      {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }} update={() => { getRunnerInfo(); getLegInfo();}} />}
-      <h2>Race Details</h2>
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
-      <Accordion
+
+      {(runner || organizer) && <button onClick={displayRunnerInfo}>Runner Info</button>}
+      {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }}
+      update={() => { getRunnerInfo(); getLegInfo();}} organizer={organizer} />}
+
+
+      <h2>Race Details</h2>
+      {/* <Accordion
       title={'Leg # | Start | Finish | Difference From Expected'}
       content={'couldnt think of a better way to do the break down quickly'}
-      />
+      /> */}
 
-      <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} update={() => { getLegInfo();}}  />
+      <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} update={() => { getLegInfo();}}
+      organizer={organizer} runnerView={runner} />
+
+      <h2>Whose Veiwing?</h2>
+      <button onClick={runnerViewing}>Runner</button>
+      <button onClick={organizerViewing}>Organizer</button>
     </div>
     );
   };
