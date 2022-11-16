@@ -7,6 +7,7 @@ import ProgressBar from './progress.js';
 import RunnersInfo from './runners.js';
 import Legs from './legs.js';
 import '../public/app.css';
+import TimeField from './time.js';
 
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
@@ -95,11 +96,13 @@ const App = () => {
       <h2>Race Details</h2>
       <Accordion
       title={'Leg # | Start | Finish | Race Difference'}
-      content={'couldnt think of a better way to do the break down quickly'}
+      content={'The Start column contains the expected start time. The Finish column contains the expected finish time. The Race Difference column contains the difference from the actual race time to the expected race time.'}
       />
 
       <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} update={() => { getLegInfo();}}
       organizer={organizer} runnerView={runner} />
+
+      {organizer && <TimeField legs={legs} update={() => { getLegInfo();}} />}
 
       <h2>Who Is Veiwing?</h2>
       <button onClick={runnerViewing}>Runner</button>
