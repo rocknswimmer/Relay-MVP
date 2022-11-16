@@ -1,8 +1,20 @@
 import React from "react";
 import Accordion from './accordion.js';
+import LegForm from './leg.js';
+import {useState} from 'react';
 
 const Legs = (props) => {
-  const {legs, completed} = props;
+  const {legs, completed, update} = props;
+  const [edit, setEdit] = useState(false);
+  const [add, setAdd] = useState(false);
+
+  const editLeg = () => {
+    setEdit(!edit);
+  };
+
+  const addLeg = () => {
+    setAdd(!add);
+  };
 
 
   return (
@@ -15,12 +27,15 @@ const Legs = (props) => {
             <div>
               <h1>{leg.runner}</h1>
               <h2>{`${leg.distance} miles`}</h2>
-              <button>Edit Leg</button>
+              <button onClick={editLeg}>Edit Leg</button>
+              {edit && <LegForm close={ () => { editLeg(); }} edit={edit} update={update} legID={leg.id} />}
             </div>
           }
         /></div>)
       })}
-      <button>Add a New Leg</button>
+      <button onClick={addLeg}>Add a New Leg</button>
+      <button>Mark Leg Complete</button>
+      {add && <LegForm close={ () => { addLeg(); }} edit={edit} update={update} />}
     </div>
 
   )

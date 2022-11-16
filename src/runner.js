@@ -28,7 +28,7 @@ const RunnerInfo = (props) => {
         close();
       })
       .catch((err) => {
-        console.log('error updating runner info');
+        console.log('error updating runner info', err);
       })
   };
 
@@ -39,7 +39,7 @@ const RunnerInfo = (props) => {
         close();
       })
       .catch((err) => {
-        console.log('error updating runner info');
+        console.log('error adding new runner', err);
       })
   }
 
@@ -52,10 +52,10 @@ const RunnerInfo = (props) => {
         <input type='text' placeholder='ex. John Doe' onChange={onRunner}/>
         <br/>
         <label>Phone Number</label>
-        <input type='text' placeholder='5553334444' onChange={onPhone}/>
+        <input type='text' placeholder='ex. 5553334444' onChange={onPhone}/>
         <br/>
         <label>10K Pace</label>
-        <input type='text' placeholder='ex. 10.5 for 10:30/mille' onChange={onPace}/>
+        <input type='text' placeholder='ex. 10.5 for 10:30/mile' onChange={onPace}/>
         <br/>
         <button onClick={edit ? updateRunner : addRunner}>{ edit ? 'Edit Runners Info' : 'Add New Runner'}</button>
       </div>

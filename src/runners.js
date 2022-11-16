@@ -1,7 +1,6 @@
 import React from "react";
 import Modal from './modal.js';
 import Accordion from './accordion.js';
-import axios from 'axios';
 import RunnerInfo from './runner.js';
 import {useState} from 'react';
 

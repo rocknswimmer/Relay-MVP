@@ -78,7 +78,7 @@ const App = () => {
       {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }} update={() => { getRunnerInfo(); getLegInfo();}} />}
       <h2>Race Details</h2>
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
-      <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} />
+      <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} update={() => { getLegInfo();}}  />
     </div>
     );
   };
