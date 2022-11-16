@@ -9,8 +9,9 @@
 .accordion-fake-title {
   display: flex;
   /* justify-content: space-between; */
-  background-color: #126ed8;
+  /* background-color: #126ed8; */
   color: rgb(254, 253, 253);
+  width: 100%;
 }
 .accordion-item {
   max-width: 80vw;

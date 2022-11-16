@@ -7,6 +7,7 @@ const Legs = (props) => {
   const {legs, completed, update} = props;
   const [edit, setEdit] = useState(false);
   const [add, setAdd] = useState(false);
+  const [marking, setMarking] = useState(false);
 
   const editLeg = () => {
     setEdit(!edit);
@@ -16,11 +17,15 @@ const Legs = (props) => {
     setAdd(!add);
   };
 
+  const startMarking = () => {
+    setMarking(!marking);
+  };
+
 
   return (
     <div>
       {legs.map((leg, i) => {
-        return (<div className="accordion-fake-title" key={i}><button onClick={() => { completed(leg.id); }}>complete</button><Accordion
+        return (<div className="accordion-fake-title" key={i}>{marking && <button onClick={() => { completed(leg.id); }}>complete</button>}<Accordion
           complete={leg.complete}
           title={<div>{` Leg ${leg.id}`}</div>}
           content={
@@ -34,7 +39,7 @@ const Legs = (props) => {
         /></div>)
       })}
       <button onClick={addLeg}>Add a New Leg</button>
-      <button>Mark Leg Complete</button>
+      <button onClick={startMarking}>Mark Leg Complete</button>
       {add && <LegForm close={ () => { addLeg(); }} edit={edit} update={update} />}
     </div>
 
