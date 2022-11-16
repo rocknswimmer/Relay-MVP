@@ -2,10 +2,11 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 // import Modal from './modal.js';
-// import Accordion from './accordion.js';
+import Accordion from './accordion.js';
 import ProgressBar from './progress.js';
 import RunnersInfo from './runners.js';
 import Legs from './legs.js';
+import '../public/app.css';
 
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
@@ -78,6 +79,11 @@ const App = () => {
       {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }} update={() => { getRunnerInfo(); getLegInfo();}} />}
       <h2>Race Details</h2>
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
+      <Accordion
+      title={'Leg # | Start | Finish | Difference From Expected'}
+      content={'couldnt think of a better way to do the break down quickly'}
+      />
+
       <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} update={() => { getLegInfo();}}  />
     </div>
     );

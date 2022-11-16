@@ -18,7 +18,7 @@
   max-width: 100%;
   max-height: 100%;
   min-height: 30%;
-  min-width: 30%;
+  min-width: 40%;
   transform: translate(-50%, -50%);
 }
 .modal-pop::-webkit-scrollbar {

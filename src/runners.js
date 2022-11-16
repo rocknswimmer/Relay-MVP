@@ -25,10 +25,9 @@ const RunnersInfo = (props) => {
           {runners.map((runner, i) => {
             return (<Accordion
               key={i}
-              title={'Runner ' + runner.id}
+              title={`Runner ${runner.id}:  ${runner.runner}`}
               content={
                 <div>
-                <h1>{runner.runner}</h1>
                 <h2>{runner.phone}</h2>
                 <button onClick={editRunner}>Edit Runner</button>
                 {edit && <RunnerInfo close={ () => { editRunner(); }} edit={edit} update={update} runnerID={runner.id}/>}
