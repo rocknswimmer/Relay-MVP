@@ -102,8 +102,17 @@ app.post('/leg/new', (req, res) => {
 })
 
 app.put('/time', (req, res) => {
-  console.log(req.body);
-  res.send(req.body);
+  // console.log(req.body);
+  // res.send(req.body);
+  const {start_time, end_time, legID} = req.body;
+
+  pool.query('update legs set start_time = $1, end_time = $2  where id = $3 returning *;', [start_time, end_time, legID], (err, data) => {
+    if (err) {
+      console.log('error updating leg info: ', err);
+      throw err;
+    }
+    res.send(data);
+  })
 })
 
 
