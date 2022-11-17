@@ -51,7 +51,7 @@ const TimeField = (props) => {
     Promise.all(updatedLegs)
       .then((data) => {
         update();
-        console.log('updated times ', data);
+        // console.log('updated times ', data);
       })
       .catch((err) => {
         console.log('error updating times ',  err);

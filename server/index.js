@@ -108,13 +108,26 @@ app.put('/time', (req, res) => {
 
   pool.query('update legs set start_time = $1, end_time = $2  where id = $3 returning *;', [start_time, end_time, legID], (err, data) => {
     if (err) {
-      console.log('error updating leg info: ', err);
+      console.log('error updating leg time info: ', err);
       throw err;
     }
     res.send(data);
   })
 })
 
+app.put('/dif', (req, res) => {
+  // console.log(req.body);
+  // res.send(req.body);
+  const {dif, legID} = req.body;
+
+  pool.query('update legs set dif = $1 where id = $2 returning *;', [dif + ' minutes', legID], (err, data) => {
+    if (err) {
+      console.log('error updating leg dif info: ', err);
+      throw err;
+    }
+    res.send(data);
+  })
+})
 
 
 
