@@ -101,6 +101,11 @@ app.post('/leg/new', (req, res) => {
   // res.send('hitting server adding leg');
 })
 
+app.put('/time', (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
+})
+
 
 
 

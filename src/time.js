@@ -30,30 +30,32 @@ const TimeField = (props) => {
       previous = currEnd;
 
 
-      // convertedStart = convertTime(currStart);
-      // convertedEnd = convertTime(currEnd);
+      convertedStart = new Intl.DateTimeFormat('en-US', {weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currStart);
+      convertedEnd = new Intl.DateTimeFormat('en-US', {weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currEnd);
 
-return({start: currStart, end: currEnd});
+// return({start: convertedStart, end: convertedEnd});
+// .then((res) => {
+//   console.log(res);
+//   update();
+//   close();
+// })
+// .catch((err) => {
+//   console.log('error updating leg info', err);
+// })
 
-      // return axios.put('/time', {start_time: convertedStart, end_time: convertedEnd, legID: leg.id})
-      // .then((res) => {
-      //   console.log(res);
-      //   update();
-      //   close();
-      // })
-      // .catch((err) => {
-      //   console.log('error updating leg info', err);
-      // })
+      return axios.put('/time', {start_time: convertedStart, end_time: convertedEnd, legID: leg.id})
+
     });
-    console.log(updatedLegs);
+    // console.log(updatedLegs);
 
-    // Promise.all(updatedLegs)
-    //   .then((data) => {
-    //     console.log('updated times ', data);
-    //   })
-    //   .catch((err) => {
-    //     console.log('error updating times ',  err);
-    //   })
+    Promise.all(updatedLegs)
+      .then((data) => {
+        update();
+        console.log('updated times ', data);
+      })
+      .catch((err) => {
+        console.log('error updating times ',  err);
+      })
 
   }
 
