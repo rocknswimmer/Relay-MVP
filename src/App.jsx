@@ -102,7 +102,7 @@ const App = () => {
       <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} update={() => { getLegInfo();}}
       organizer={organizer} runnerView={runner} />
 
-      {organizer && <TimeField legs={legs} update={() => { getLegInfo();}} />}
+      {organizer && <TimeField legs={legs} update={() => { getLegInfo();}} runners={runners} />}
 
       <h2>Who Is Veiwing?</h2>
       <button onClick={runnerViewing}>Runner</button>
