@@ -36,7 +36,7 @@ const RunnersInfo = (props) => {
               }
             />)
           })}
-          {organizer && <button onClick={addRunner}>Add Runner</button>}
+          {organizer && runners.length < 15 && <button onClick={addRunner}>Add Runner</button>}
           {add && <RunnerInfo close={ () => { addRunner(); }} edit={edit} update={update}/>}
         </div>
       }
