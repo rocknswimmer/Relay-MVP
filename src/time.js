@@ -13,7 +13,7 @@ const TimeField = (props) => {
   const updateTime = () => {
     console.log('will eventually map through legs using start time', startTime);
 
-    let previous = Number(startTime);
+    let previous = Number(startTime) * 1000; // convert unix seconds to milliseconds to match math
     let currStart = Number(startTime);
     let currEnd = 'TBD'
     let currLeg = 1;
@@ -23,11 +23,14 @@ const TimeField = (props) => {
 
     let updatedLegs = legs.map((leg, i) => {
 
+
       currStart = previous;
 
-      currLeg = Math.floor(leg.distance * runners[leg.runner_id - 1].pace) * 60000;// distance * pace/mile in mins * 60 sec * millisecs
+      currLeg = Math.floor(leg.distance * runners[leg.runner_id - 1].pace * 60000);// distance * pace/mile in mins * 60 sec * millisecs
       currEnd = currStart + currLeg;
       previous = currEnd;
+
+      console.log(new Intl.DateTimeFormat('en-US', {dateStyle: 'full', timeStyle: 'long', timeZone:'America/New_York'}).format(currStart));
 
 
       convertedStart = new Intl.DateTimeFormat('en-US', {weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currStart);
