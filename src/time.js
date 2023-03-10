@@ -30,7 +30,7 @@ const TimeField = (props) => {
       currEnd = currStart + currLeg;
       previous = currEnd;
 
-      console.log(new Intl.DateTimeFormat('en-US', {dateStyle: 'full', timeStyle: 'long', timeZone:'America/New_York'}).format(currStart));
+      // console.log(new Intl.DateTimeFormat('en-US', {dateStyle: 'full', timeStyle: 'long', timeZone:'America/New_York'}).format(currStart));
 
 
       convertedStart = new Intl.DateTimeFormat('en-US', {weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currStart);
