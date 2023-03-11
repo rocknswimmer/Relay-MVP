@@ -10,6 +10,7 @@ const Legs = (props) => {
   const [add, setAdd] = useState(false);
   const [marking, setMarking] = useState(false);
   const [diff, setDiff] = useState('');
+  const allowedDifVals = '1234567890-+'.split('');
 
   const editLeg = () => {
     setEdit(!edit);
@@ -28,13 +29,20 @@ const Legs = (props) => {
   };
 
   const editDiff = (leg) => {
-    axios.put('/dif', {dif: diff, legID: leg.id})
+
+    if((diff.length > 1 || diff === '0')  && diff.split('').every((char) => {return allowedDifVals.indexOf(char) !== -1 })) {
+      axios.put('/dif', {dif: diff, legID: leg.id})
      .then((data) => {
       update();
      })
      .catch((err) => {
       console.log('error updating difference: ', err);
      })
+    } else {
+      alert(`time difference can only contain numbers, - , and +, and contain + or - unless 0. For reference: ${allowedDifVals}`)
+    }
+
+
   };
 
   return (
@@ -52,7 +60,7 @@ const Legs = (props) => {
               {edit && <LegForm close={ () => { editLeg(); }} edit={edit} update={update} legID={leg.id} />}
               {organizer &&
               <div>
-                <input type="text" placeholder="ex. + 1, for 1 minute slow" onChange={onDiff} />
+                <input type="text" placeholder="ex. +1, for 1 minute slow" onChange={onDiff} />
                 <button onClick={() => {editDiff(leg)}}>Update Difference</button>
               </div>}
             </div>
