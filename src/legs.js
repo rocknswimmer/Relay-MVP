@@ -56,8 +56,12 @@ const Legs = (props) => {
               <h1>{leg.runner}</h1>
               <h2>{`${leg.distance} miles`}</h2>
               <h2>Pace: {leg.pace}</h2>
-              {organizer && <button onClick={editLeg}>Edit Leg</button>}
+              {organizer && <div>
+                <button onClick={editLeg}>Edit Leg</button>
+                <button onClick={} >Delete Leg</button>
+                </div>}
               {edit && <LegForm close={ () => { editLeg(); }} edit={edit} update={update} legID={leg.id} />}
+
               {organizer &&
               <div>
                 <input type="text" placeholder="ex. +1, for 1 minute slow" onChange={onDiff} />
