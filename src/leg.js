@@ -7,6 +7,8 @@ const LegForm = (props) => {
   const {close, edit, update, legID} = props;
   const [runner, setRunner] = useState('');
   const [distance, setDistance] = useState('');
+  const approvedRunnerNumberValues = '1234567890'.split('');
+  const approvedDistanceValues = '1234567890.'.split('');
 
 
   const onRunner = (e) => {
@@ -18,7 +20,9 @@ const LegForm = (props) => {
   };
 
   const updateLeg = () => {
-    axios.put('/leg', {runner: runner, distance: distance, legID: legID})
+    if(((runner.length > 0 && runner.length < 3) && runner.split('').every((char) => {return approvedRunnerNumberValues.indexOf(char) !== -1}))
+    && ((distance.length > 0 && distance.length < 5) && distance.split('').every((char) => {return approvedDistanceValues.indexOf(char) !== -1}))) {
+       axios.put('/leg', {runner: runner, distance: distance, legID: legID})
       .then((res) => {
         console.log(res);
         update();
@@ -27,10 +31,16 @@ const LegForm = (props) => {
       .catch((err) => {
         console.log('error updating leg info', err);
       })
+    } else {
+      alert(`runner number must be less than 100 and the distance should be less than 100 miles with a decimal. Approved runner number input values: ${approvedRunnerNumberValues} and approved distance input values: ${approvedDistanceValues}`)
+    }
+
   };
 
   const addleg = () => {
-    axios.post('/leg/new', {runner: runner, distance: distance})
+    if(((runner.length > 0 && runner.length < 3) && runner.split('').every((char) => {return approvedRunnerNumberValues.indexOf(char) !== -1}))
+    && ((distance.length > 0 && distance.length < 5) && distance.split('').every((char) => {return approvedDistanceValues.indexOf(char) !== -1}))) {
+       axios.post('/leg/new', {runner: runner, distance: distance})
       .then((res) => {
         console.log(res);
         update();
@@ -39,6 +49,11 @@ const LegForm = (props) => {
       .catch((err) => {
         console.log('error adding new leg', err);
       })
+    } else {
+      alert(`runner number must be less than 100 and the distance should be less than 100 miles with a decimal. Approved runner number input values: ${approvedRunnerNumberValues} and approved distance input values: ${approvedDistanceValues}`)
+    }
+
+
   }
 
   return (
