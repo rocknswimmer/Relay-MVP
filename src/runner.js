@@ -8,6 +8,9 @@ const RunnerInfo = (props) => {
   const [runner, setRunner] = useState('');
   const [phone, setPhone] = useState('');
   const [pace, setPace] = useState('');
+  const approvedRunnerPhoneNumberValues = '1234567890'.split('');
+  const approvedRunnerNameValues = 'abcdefghijklmnopqrstuvwxyz 1234567890'.split('');// since demo names are and 2 had to include numbers for consistency
+  const approvedPaceValues = '1234567890.'.split('');
 
   const onRunner = (e) => {
     setRunner(e.target.value);
@@ -22,6 +25,7 @@ const RunnerInfo = (props) => {
   };
 
   const updateRunner = () => {
+
     axios.put('/runner', {runner: runner, phone: phone, pace: pace, runnerID: runnerID})
       .then((res) => {
         update();
