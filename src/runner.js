@@ -25,8 +25,10 @@ const RunnerInfo = (props) => {
   };
 
   const updateRunner = () => {
-
-    axios.put('/runner', {runner: runner, phone: phone, pace: pace, runnerID: runnerID})
+    if(((runner.length > 0 && runner.length < 26) && runner.split('').every((char) => {return approvedRunnerNameValues.indexOf(char.toLowerCase()) !== -1}))
+    && (phone.length === 10 && phone.split('').every((char) => {return approvedRunnerPhoneNumberValues.indexOf(char) !== -1}))
+    && ((pace.length > 0 && pace.length < 5) && pace.split('').every((char) => {return approvedPaceValues.indexOf(char) !== -1}))) {
+      axios.put('/runner', {runner: runner, phone: phone, pace: pace, runnerID: runnerID})
       .then((res) => {
         update();
         close();
@@ -34,10 +36,18 @@ const RunnerInfo = (props) => {
       .catch((err) => {
         console.log('error updating runner info', err);
       })
+    } else {
+      alert(`Runner name can only contain letters numbers and spaces, with max of 25 characters. Phone number needs to be 10 digits. Pace needs to be just the numbers with any decimals rounded to 2 significant figures. Approved Name Values: ${approvedRunnerNameValues} Approved Phone Values: ${approvedRunnerPhoneNumberValues} Approved Pace Values: ${approvedPaceValues}`)
+    }
+
+
   };
 
   const addRunner = () => {
-    axios.post('/runner/new', {runner: runner, phone: phone, pace: pace})
+    if(((runner.length > 0 && runner.length < 26) && runner.split('').every((char) => {return approvedRunnerNameValues.indexOf(char.toLowerCase()) !== -1}))
+    && (phone.length === 10 && phone.split('').every((char) => {return approvedRunnerPhoneNumberValues.indexOf(char) !== -1}))
+    && ((pace.length > 0 && pace.length < 5) && pace.split('').every((char) => {return approvedPaceValues.indexOf(char) !== -1}))) {
+      axios.post('/runner/new', {runner: runner, phone: phone, pace: pace})
       .then((res) => {
         update();
         close();
@@ -45,6 +55,10 @@ const RunnerInfo = (props) => {
       .catch((err) => {
         console.log('error adding new runner', err);
       })
+    } else {
+      alert(`Runner name can only contain letters numbers and spaces, with max of 25 characters. Phone number needs to be 10 digits. Pace needs to be just the numbers with any decimals rounded to 2 significant figures. Approved Name Values: ${approvedRunnerNameValues} Approved Phone Values: ${approvedRunnerPhoneNumberValues} Approved Pace Values: ${approvedPaceValues}`)
+    }
+
   }
 
   return (
