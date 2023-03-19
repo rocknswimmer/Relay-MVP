@@ -8,16 +8,19 @@ const TimeField = (props) => {
   const approvedTimeValues = '1234567890'.split('')
 
   const onTime = (e) => {
-    setStartTime(e.target.value);
+    const unixTime = new Date(e.target.value).getTime()
+    setStartTime(unixTime);
   };
 
   const updateTime = () => {
-    if(startTime.length > 0 && startTime.split('').every((char) => {return approvedTimeValues.indexOf(char) !== -1})){
+    // console.log('will eventually map through legs using start time', startTime, 'with type:', typeof startTime);
 
-      console.log('will eventually map through legs using start time', startTime);
+    // if(startTime.length > 0 && startTime.split('').every((char) => {return approvedTimeValues.indexOf(char) !== -1})){
 
-      let previous = Number(startTime) * 1000; // convert unix seconds to milliseconds to match math
-      let currStart = Number(startTime);
+      // console.log('will eventually map through legs using start time', startTime);
+
+      let previous = startTime//Number(startTime) * 1000; // convert unix seconds to milliseconds to match math
+      let currStart = startTime//Number(startTime);
       let currEnd = 'TBD'
       let currLeg = 1;
       let convertedStart = '';
@@ -47,9 +50,9 @@ const TimeField = (props) => {
         .catch((err) => {
           console.log('error updating times ', err);
         })
-    } else {
-      alert(`Currently time needs to be a number that represents the unix time in milliseconds to start. Approved values are ${approvedTimeValues}`)
-    }
+    // } else {
+    //   alert(`Currently time needs to be a number that represents the unix time in milliseconds to start. Approved values are ${approvedTimeValues}`)
+    // }
 
   }
 
@@ -57,7 +60,9 @@ const TimeField = (props) => {
     <div>
       <label>Update/Add Race Start Time</label>
       <br/>
-      <input type="text" placeholder="Unix Time For start" onChange={onTime} />
+      <label>Start Time:</label>
+      <input type="datetime-local" onChange={onTime}></input>
+      {/* <input type="text" placeholder="Unix Time For start" onChange={onTime} /> */}
       <br/>
       <button onClick={updateTime}>Update Time</button>
     </div>
