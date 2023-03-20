@@ -8,7 +8,9 @@ Demo: [DEMO](http://52.21.107.140:3008/)
 The following walk throughs can help you understand the demo. As you move down the list you can still do everything above.
 
 Viewer Walkthrough:
+This is the view without clicking either option at the bottom. At the top is a progress bar to show how much of the relay has been completed. Below that are the race details where you can see when each leg is supposed to start and end, and how on pace the race is. If you click on a leg you can see who is running it, the distance, and the runners pace.
 
 Runner Walkthrough:
+The first addition you might notice when clicking the runner button is a new button at the top that says runner infromation. This allows runners easy access to eachothers phone numbers for hand offs and other communication needs. The phone number can be found by clicking on a runner accordion in the modal that pops up after clicking the runner infromation button. Also underneath the leg feed is a new button that says mark leg compelete. This is a feature I wanted my runners to have, because part of the fun is being able to mark your own leg complete. When running this in google sheets, I did not want anything to happen, so there was no edit access.
 
 Organizer walk through:
