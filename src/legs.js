@@ -46,7 +46,7 @@ const Legs = (props) => {
   };
 
   return (
-    <div>
+    <div id='leg-feed'>
       {legs.map((leg, i) => {
         return (<div className="accordion-fake-title" key={i}>{marking && <button onClick={() => { completed(leg.id); }}>complete</button>}<Accordion
           complete={leg.complete}

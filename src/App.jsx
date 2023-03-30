@@ -83,7 +83,7 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div id="app">
       <h1>Virtual Relay</h1>
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
 
