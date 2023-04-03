@@ -1,7 +1,7 @@
 # Relay-MVP
 Main goal of this 3 day MVP was go give my 2023 runners a better virtual relay experience than I provided in 2021 using google sheets.
 
-While working to finalize the app for use, I decided to deploy a demo to be able to experience the app from all prespectives at the click of a button or two.
+While working to improve the app for use after the original deadline, I decided to deploy a demo to be able to experience the app from all prespectives at the click of a button or two.
 
 Demo: [DEMO](http://52.21.107.140:3008/)
 
@@ -19,4 +19,4 @@ Organizer walk through:
 
 In the organizer view, you now have the ability to add and edit runners, legs and the start time for the relay. Now when you open the runner info modal, a button will apear at the bottom allowing you to add runners. To edit a runners info open their accordion in the runner info modal and click the edit runner button. The same hold true for how to edit legs, now when you open the leg accordions a button to edit exists. The button to add a leg in underneath the legs next to the mark complete button. Just below that is the final feature. I updated the relay start time to take a user friendly date time and convert it to unix to for the calculations. Watch all the leg time estimates update when you change the day and time, its probably my favorite part of the app.
 
-Since I am the organizer, and this app is designed to be used by very few people, the features and styles may not change much as a continue preping it for the race, but this is undoubtedly much more runner and organizer friendly than storing the information on spread sheets.
+Since I am the organizer, and this app is designed to be used by very few people, the features and styles may not change much as I continue preping it for the race, but this is undoubtedly much more runner and organizer friendly than storing the information on spread sheets.
