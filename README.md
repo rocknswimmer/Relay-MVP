@@ -3,6 +3,10 @@ Main goal of this 3 day MVP was go give my 2023 runners a better virtual relay e
 
 While working to improve the app for use after the original deadline, I decided to deploy a demo to be able to experience the app from all prespectives at the click of a button or two.
 
+
+https://user-images.githubusercontent.com/108627643/234087039-0dac090c-1f49-456c-b1c1-6a6ba56d6998.mp4
+
+
 Demo: [DEMO](http://52.21.107.140:3008/)
 
 The following walk throughs can help you understand the demo. As you move down the list you can still do everything above.
