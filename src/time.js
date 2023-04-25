@@ -54,6 +54,13 @@ const TimeField = (props) => {
     //   alert(`Currently time needs to be a number that represents the unix time in milliseconds to start. Approved values are ${approvedTimeValues}`)
     // }
 
+    /*
+    Idead for handling timezones:
+    1. store the unix time as a string, down side client handling of time change
+    2. calc all time zones in above promise chain, down side long promise, more to break
+    3. research if can convert in sql query, may combine with idea 1
+    */
+
   }
 
   return (
