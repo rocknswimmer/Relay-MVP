@@ -5,7 +5,7 @@ While working to improve the app for use after the original deadline, I decided 
 
 Demo: [DEMO WEBSITE](http://52.21.107.140:3008/)
 
-Time Update Gif:
+Time Update Gif: recorded on phone since that is how my runners will experience it
 
 https://user-images.githubusercontent.com/108627643/234087039-0dac090c-1f49-456c-b1c1-6a6ba56d6998.mp4
 
