@@ -111,3 +111,10 @@ const App = () => {
   };
 
   export default App;
+
+  /*
+  minimal wrap to dos
+  individual runner log in and my log in (maybe login button instead of whose viewing section)
+  time zones handled easier in db on client/server side
+  store variables in browser for one time login?
+  */
