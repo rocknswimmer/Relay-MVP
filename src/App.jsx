@@ -119,3 +119,9 @@ const App = () => {
   store variables in browser for one time login?
 
   */
+ /*
+ project priotity list?
+ port
+ bus
+ this
+ */
