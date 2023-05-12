@@ -125,3 +125,10 @@ const App = () => {
  bus
  this
  */
+
+ /*
+ port tech reqs
+ pages - react router
+ static?/ no user input, but maybe interaction - next js?
+
+ */
