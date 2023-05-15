@@ -132,5 +132,4 @@ const App = () => {
  static?/ no user input, but maybe interaction - next js?
  themes drop down for more viewing experiences, from standard to stark esk
 
-
  */
