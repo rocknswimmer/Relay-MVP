@@ -29,7 +29,7 @@ app.get('/runners', (req, res) => {
 });
 
 app.get('/legs', (req, res) => {
-  pool.query('select id, (select runner from runners where id = legs.runner) as runner, (select pace from runners where id = legs.runner) as pace, distance, complete, start_time, end_time, dif, runner as runner_id from legs', (err, data) => {
+  pool.query('select id, (select runner from runners where id = legs.runner) as runner, (select pace from runners where id = legs.runner) as pace, distance, complete, start_time, end_time, pacific_start, pacific_end, dif, runner as runner_id from legs', (err, data) => {
     if (err) {
       console.log('error retrieving legs from db: ', err);
       throw err;
@@ -105,11 +105,11 @@ app.post('/leg/new', (req, res) => {
 app.put('/time', (req, res) => {
   // console.log(req.body);
   // res.send(req.body);
-  const {start_time, end_time, legID} = req.body;
+  const {start_time, end_time, pacific_start, pacific_end, legID} = req.body;
 
-  pool.query('update legs set start_time = $1, end_time = $2  where id = $3 returning *;', [start_time, end_time, legID], (err, data) => {
+  pool.query('update legs set start_time = $1, end_time = $2, pacific_start = $3, pacific_end = $4 where id = $5 returning *;', [start_time, end_time, pacific_start, pacific_end, legID], (err, data) => {
     if (err) {
-      console.log('error updating leg time info: ', err);
+      console.log('error updating leg time info: ', err, pacific_start);
       throw err;
     }
     res.send(data);

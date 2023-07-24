@@ -24,7 +24,9 @@ const TimeField = (props) => {
       let currEnd = 'TBD'
       let currLeg = 1;
       let convertedStart = '';
+      let convertedStartPacific = '';
       let convertedEnd = '';
+      let convertedEndPacific = '';
 
       let updatedLegs = legs.map((leg, i) => {
 
@@ -37,9 +39,11 @@ const TimeField = (props) => {
         // console.log(new Intl.DateTimeFormat('en-US', {dateStyle: 'full', timeStyle: 'long', timeZone:'America/New_York'}).format(currStart));
 
         convertedStart = new Intl.DateTimeFormat('en-US', { weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currStart);
+        convertedStartPacific = new Intl.DateTimeFormat('en-US', { timeZone: "America/Los_Angeles", weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currStart);
         convertedEnd = new Intl.DateTimeFormat('en-US', { weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currEnd);
+        convertedEndPacific = new Intl.DateTimeFormat('en-US', { timeZone: "America/Los_Angeles", weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currEnd);
 
-        return axios.put('/time', { start_time: convertedStart, end_time: convertedEnd, legID: leg.id })
+        return axios.put('/time', { start_time: convertedStart, end_time: convertedEnd, legID: leg.id, pacific_start: convertedStartPacific, pacific_end: convertedEndPacific})
 
       });
 
