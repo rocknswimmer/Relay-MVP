@@ -93,6 +93,15 @@ const App = () => {
 
 
       <h2>Race Details</h2>
+
+      {/* <div class="flipswitch">
+        <input checked="" id="fs" class="flipswitch-cb" name="flipswitch" type="checkbox"/>
+          <label for="fs" class="flipswitch-label">
+            <div class="flipswitch-inner"></div>
+            <div class="flipswitch-switch"></div>
+          </label>
+      </div> */}
+
       <Accordion
       title={'Leg # | Start | Finish | Race Difference'}
       content={'The Start column contains the expected start time. The Finish column contains the expected finish time. The Race Difference column contains the difference from the actual race time to the expected race time.'}
