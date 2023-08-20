@@ -5,7 +5,7 @@ import {useState} from 'react';
 import axios from 'axios';
 
 const Legs = (props) => {
-  const {legs, completed, update, organizer, runnerView} = props;
+  const {legs, completed, update, organizer, runnerView, secondHalf} = props;
   const [edit, setEdit] = useState(false);
   const [add, setAdd] = useState(false);
   const [marking, setMarking] = useState(false);
@@ -50,7 +50,7 @@ const Legs = (props) => {
       {legs.map((leg, i) => {
         return (<div className="accordion-fake-title" key={i}>{marking && <button onClick={() => { completed(leg.id); }}>complete</button>}<Accordion
           complete={leg.complete}
-          title={<div>{` Leg ${leg.id} | ${leg.runner.slice(0,3)} | ${leg.start_time} | ${leg.end_time} | ${leg.dif}`}</div>}
+          title={<div>{` Leg ${(secondHalf ? leg.id + 17 : leg.id)} | ${leg.runner.slice(0,3)} | ${leg.start_time} | ${leg.end_time} | ${leg.dif}`}</div>}
           content={
             <div>
               <h1>{leg.runner}</h1>
@@ -72,7 +72,7 @@ const Legs = (props) => {
         /></div>)
       })}
       {/* {organizer && legs.length <= 32 && <button onClick={addLeg}>Add a New Leg</button>} */}
-      {(organizer || runnerView) && <button onClick={startMarking}>Mark Leg Complete</button>}
+      {secondHalf && (organizer || runnerView) && <button onClick={startMarking}>Mark Leg Complete</button>}
       {add && <LegForm close={ () => { addLeg(); }} edit={edit} update={update} />}
     </div>
 

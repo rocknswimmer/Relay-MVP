@@ -11,8 +11,9 @@ import TimeField from './time.js';
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
   const [runners, setRunners] = useState([]);
-  const [legs, setLegs] = useState([]);
-  const [completeLegs, setCompleteLegs] = useState([]);
+  const [legs1, setLegs1] = useState([]);
+  const [legs2, setLegs2] = useState([]);
+  const [completeLegs, setCompleteLegs] = useState([]);//figure out how to double
   const [runner, setRunner] = useState(false);
   const [organizer, setOrganizer] = useState(false);
 
@@ -26,7 +27,8 @@ const App = () => {
 
   useEffect(() => {
     getRunnerInfo();
-    getLegInfo();
+    getLeg1Info();
+    getLeg2Info();
   }, []);
 
   const displayRunnerInfo = () => {
@@ -52,8 +54,28 @@ const App = () => {
       })
   };
 
-  const getLegInfo = () => {
-    axios.get('/legs')
+  // const getLegInfo = () => {
+  //   axios.get('/legs')
+  //     .then((res) => {
+  //       let sorted = res.data.sort(function compareFn(a, b) {
+  //         if (a.id < b.id) {
+  //           return -1;
+  //         }
+  //         if (a.id > b.id) {
+  //           return 1;
+  //         }
+  //         return 0;
+  //       })
+  //       setLegs(sorted);
+  //       setCompleteLegs(sorted.filter((leg) => { return leg.complete }))
+  //     })
+  //     .catch((err) => {
+  //       console.log('error getting leg info: ', err);
+  //     })
+  // };
+
+  const getLeg1Info = () => {
+    axios.get('/legs1')
       .then((res) => {
         let sorted = res.data.sort(function compareFn(a, b) {
           if (a.id < b.id) {
@@ -64,8 +86,26 @@ const App = () => {
           }
           return 0;
         })
-        setLegs(sorted);
-        setCompleteLegs(sorted.filter((leg) => { return leg.complete }))
+        setLegs1(sorted);
+      })
+      .catch((err) => {
+        console.log('error getting leg1 info: ', err);
+      })
+  };
+  const getLeg2Info = () => {
+    axios.get('/legs2')
+      .then((res) => {
+        let sorted = res.data.sort(function compareFn(a, b) {
+          if (a.id < b.id) {
+            return -1;
+          }
+          if (a.id > b.id) {
+            return 1;
+          }
+          return 0;
+        })
+        setLegs2(sorted);
+        //setCompleteLegs(sorted.filter((leg) => { return leg.complete }))
       })
       .catch((err) => {
         console.log('error getting leg info: ', err);
@@ -75,7 +115,8 @@ const App = () => {
   const updateStatus = (leg) => {
     axios.put('/:leg/complete', {'leg': leg})
       .then((res) => {
-        getLegInfo();
+        getLeg1Info();
+        getLeg2Info();
       })
       .catch((err) => {
         console.log('error updating leg completion');
@@ -85,11 +126,11 @@ const App = () => {
   return (
     <div id="app">
       <h1>Virtual Relay</h1>
-      <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
+      <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs1.length) * 100} />
 
       {(runner || organizer) && <button onClick={displayRunnerInfo}>Runner Info</button>}
       {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }}
-      update={() => { getRunnerInfo(); getLegInfo();}} organizer={organizer} />}
+      update={() => { getRunnerInfo(); getLeg1Info(); getLeg2Info();}} organizer={organizer} />}
 
 
       <h2>Race Details</h2>
@@ -107,10 +148,16 @@ const App = () => {
       content={'The Start column contains the expected start time. The Finish column contains the expected finish time. The Race Difference column contains the difference from the actual race time to the expected race time.'}
       />
 
-      <Legs legs={legs} completed={(leg) => { updateStatus(leg); }} update={() => { getLegInfo();}}
-      organizer={organizer} runnerView={runner} />
+      <Legs legs={legs1} completed={(leg) => { updateStatus(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
+      organizer={organizer} runnerView={runner} secondHalf={false} />
+      <Accordion
+      title={'------------ NIGHT BREAK ------------'}
+      content={'hopefullly goes at the break'}
+      />
+      <Legs legs={legs2} completed={(leg) => { updateStatus(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
+      organizer={organizer} runnerView={runner} secondHalf={true}/>
 
-      {organizer && <TimeField legs={legs} update={() => { getLegInfo();}} runners={runners} />}
+      {organizer && <TimeField legs={legs1} update={() => { getLeg1Info(); getLeg2Info();}} runners={runners} />}
 
       <h2>Who Is Veiwing?</h2>
       <button onClick={runnerViewing}>Runner</button>
