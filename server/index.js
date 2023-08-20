@@ -38,6 +38,25 @@ app.get('/legs', (req, res) => {
   })
 });
 
+// app.get('/legs1', (req, res) => {
+//   pool.query('select id, (select runner from runners where id = legs1.runner) as runner, (select pace from runners where id = legs1.runner) as pace, distance, complete, start_time, end_time, pacific_start, pacific_end, dif, runner as runner_id from legs1', (err, data) => {
+//     if (err) {
+//       console.log('error retrieving legs from db: ', err);
+//       throw err;
+//     }
+//     res.send(data.rows);
+//   })
+// });
+// app.get('/legs2', (req, res) => {
+//   pool.query('select id, (select runner from runners where id = legs2.runner) as runner, (select pace from runners where id = legs2.runner) as pace, distance, complete, start_time, end_time, pacific_start, pacific_end, dif, runner as runner_id from legs2', (err, data) => {
+//     if (err) {
+//       console.log('error retrieving legs from db: ', err);
+//       throw err;
+//     }
+//     res.send(data.rows);
+//   })
+// });
+
 app.put('/:leg/complete', (req, res) => {
 
   pool.query('update legs set complete = not complete where id = $1 returning *;', [req.body.leg], (err, data) => {
