@@ -71,7 +71,7 @@ const Legs = (props) => {
           }
         /></div>)
       })}
-      {organizer && legs.length <= 32 && <button onClick={addLeg}>Add a New Leg</button>}
+      {/* {organizer && legs.length <= 32 && <button onClick={addLeg}>Add a New Leg</button>} */}
       {(organizer || runnerView) && <button onClick={startMarking}>Mark Leg Complete</button>}
       {add && <LegForm close={ () => { addLeg(); }} edit={edit} update={update} />}
     </div>
