@@ -57,6 +57,8 @@ app.get('/legs', (req, res) => {
 //   })
 // });
 
+
+//need to make l1 and 2 for complete
 app.put('/:leg/complete', (req, res) => {
 
   pool.query('update legs set complete = not complete where id = $1 returning *;', [req.body.leg], (err, data) => {
@@ -121,6 +123,7 @@ app.post('/leg/new', (req, res) => {
   // res.send('hitting server adding leg');
 })
 
+//need to make l1 and 2 for time
 app.put('/time', (req, res) => {
   // console.log(req.body);
   // res.send(req.body);
@@ -135,6 +138,7 @@ app.put('/time', (req, res) => {
   })
 })
 
+//need to make l1 and 2 for difference
 app.put('/dif', (req, res) => {
   // console.log(req.body);
   // res.send(req.body);
