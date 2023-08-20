@@ -103,7 +103,7 @@ const App = () => {
       </div> */}
 
       <Accordion
-      title={'Leg # | Start | Finish | Race Difference'}
+      title={'Leg # | Runner | Start | Finish | Race Difference'}
       content={'The Start column contains the expected start time. The Finish column contains the expected finish time. The Race Difference column contains the difference from the actual race time to the expected race time.'}
       />
 
