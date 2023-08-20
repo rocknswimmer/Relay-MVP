@@ -3,7 +3,7 @@ import {useState} from 'react';
 import axios from 'axios';
 
 const TimeField = (props) => {
-  const {legs, update, runners} = props;
+  const {legs, update, runners, secondHalf} = props;
   const [startTime, setStartTime] = useState('');
   const approvedTimeValues = '1234567890'.split('')
 
@@ -43,7 +43,10 @@ const TimeField = (props) => {
         convertedEnd = new Intl.DateTimeFormat('en-US', { weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currEnd);
         convertedEndPacific = new Intl.DateTimeFormat('en-US', { timeZone: "America/Los_Angeles", weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currEnd);
 
-        return axios.put('/time', { start_time: convertedStart, end_time: convertedEnd, legID: leg.id, pacific_start: convertedStartPacific, pacific_end: convertedEndPacific})
+        if(secondHalf){
+          return axios.put('/time2', { start_time: convertedStart, end_time: convertedEnd, legID: leg.id, pacific_start: convertedStartPacific, pacific_end: convertedEndPacific})
+        }
+        return axios.put('/time1', { start_time: convertedStart, end_time: convertedEnd, legID: leg.id, pacific_start: convertedStartPacific, pacific_end: convertedEndPacific})
 
       });
 
@@ -69,7 +72,8 @@ const TimeField = (props) => {
 
   return (
     <div>
-      <label>Update/Add Race Start Time</label>
+      {!secondHalf && <label>Update/Add Race Start Time</label>}
+      {secondHalf && <label>Update/Add After Break Start Time</label>}
       <br/>
       <label>Start Time:</label>
       <input type="datetime-local" onChange={onTime}></input>

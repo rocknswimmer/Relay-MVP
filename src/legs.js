@@ -31,13 +31,24 @@ const Legs = (props) => {
   const editDiff = (leg) => {
 
     if((diff.length > 1 || diff === '0')  && diff.split('').every((char) => {return allowedDifVals.indexOf(char) !== -1 })) {
-      axios.put('/dif', {dif: diff, legID: leg.id})
+      if(secondHalf){
+        axios.put('/dif2', {dif: diff, legID: leg.id})
      .then((data) => {
       update();
      })
      .catch((err) => {
       console.log('error updating difference: ', err);
      })
+      } else {
+        axios.put('/dif1', {dif: diff, legID: leg.id})
+     .then((data) => {
+      update();
+     })
+     .catch((err) => {
+      console.log('error updating difference: ', err);
+     })
+      }
+
     } else {
       alert(`time difference can only contain numbers, - , and +, and contain + or - unless 0. For reference: ${allowedDifVals}`)
     }
@@ -72,7 +83,7 @@ const Legs = (props) => {
         /></div>)
       })}
       {/* {organizer && legs.length <= 32 && <button onClick={addLeg}>Add a New Leg</button>} */}
-      {secondHalf && (organizer || runnerView) && <button onClick={startMarking}>Mark Leg Complete</button>}
+      {(organizer || runnerView) && <button onClick={startMarking}>Mark Leg Complete</button>}
       {add && <LegForm close={ () => { addLeg(); }} edit={edit} update={update} />}
     </div>
 

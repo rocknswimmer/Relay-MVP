@@ -59,14 +59,36 @@ app.get('/legs2', (req, res) => {
 
 
 //need to make l1 and 2 for complete
-app.put('/:leg/complete', (req, res) => {
+// app.put('/:leg/complete', (req, res) => {
 
-  pool.query('update legs set complete = not complete where id = $1 returning *;', [req.body.leg], (err, data) => {
+//   pool.query('update legs set complete = not complete where id = $1 returning *;', [req.body.leg], (err, data) => {
+//     if (err) {
+//       console.log('error marknig leg complete: ', err);
+//       throw err;
+//     }
+//     res.send('updated leg status');
+//   })
+
+// });
+app.put('/:leg/complete1', (req, res) => {
+
+  pool.query('update legs1 set complete = not complete where id = $1 returning *;', [req.body.leg], (err, data) => {
     if (err) {
-      console.log('error marknig leg complete: ', err);
+      console.log('error marknig leg1 complete: ', err);
       throw err;
     }
-    res.send('updated leg status');
+    res.send('updated leg1 status');
+  })
+
+});
+app.put('/:leg/complete2', (req, res) => {
+
+  pool.query('update legs2 set complete = not complete where id = $1 returning *;', [req.body.leg], (err, data) => {
+    if (err) {
+      console.log('error marknig leg2 complete: ', err);
+      throw err;
+    }
+    res.send('updated leg2 status');
   })
 
 });
@@ -165,14 +187,41 @@ app.put('/time2', (req, res) => {
 })
 
 //need to make l1 and 2 for difference
-app.put('/dif', (req, res) => {
+// app.put('/dif', (req, res) => {
+//   // console.log(req.body);
+//   // res.send(req.body);
+//   const {dif, legID} = req.body;
+
+//   pool.query('update legs set dif = $1 where id = $2 returning *;', [dif + ' minutes', legID], (err, data) => {
+//     if (err) {
+//       console.log('error updating leg dif info: ', err);
+//       throw err;
+//     }
+//     res.send(data);
+//   })
+// })
+
+app.put('/dif1', (req, res) => {
   // console.log(req.body);
   // res.send(req.body);
   const {dif, legID} = req.body;
 
-  pool.query('update legs set dif = $1 where id = $2 returning *;', [dif + ' minutes', legID], (err, data) => {
+  pool.query('update legs1 set dif = $1 where id = $2 returning *;', [dif + ' minutes', legID], (err, data) => {
     if (err) {
-      console.log('error updating leg dif info: ', err);
+      console.log('error updating leg1 dif info: ', err);
+      throw err;
+    }
+    res.send(data);
+  })
+})
+app.put('/dif2', (req, res) => {
+  // console.log(req.body);
+  // res.send(req.body);
+  const {dif, legID} = req.body;
+
+  pool.query('update legs2 set dif = $1 where id = $2 returning *;', [dif + ' minutes', legID], (err, data) => {
+    if (err) {
+      console.log('error updating leg2 dif info: ', err);
       throw err;
     }
     res.send(data);
