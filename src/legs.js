@@ -5,10 +5,10 @@ import {useState} from 'react';
 import axios from 'axios';
 
 const Legs = (props) => {
-  const {legs, completed, update, organizer, runnerView, secondHalf} = props;
+  const {legs, completed, update, organizer, runnerView, secondHalf, marking} = props;
   const [edit, setEdit] = useState(false);
   const [add, setAdd] = useState(false);
-  const [marking, setMarking] = useState(false);
+  //const [marking, setMarking] = useState(false);
   const [diff, setDiff] = useState('');
   const allowedDifVals = '1234567890-+'.split('');
 
@@ -20,9 +20,9 @@ const Legs = (props) => {
     setAdd(!add);
   };
 
-  const startMarking = () => {
-    setMarking(!marking);
-  };
+  // const startMarking = () => {
+  //   setMarking(!marking);
+  // };
 
   const onDiff = (e) => {
     setDiff(e.target.value);
@@ -83,7 +83,7 @@ const Legs = (props) => {
         /></div>)
       })}
       {/* {organizer && legs.length <= 32 && <button onClick={addLeg}>Add a New Leg</button>} */}
-      {(organizer || runnerView) && <button onClick={startMarking}>Mark Leg Complete</button>}
+      {/* {(organizer || runnerView) && <button onClick={startMarking}>Mark Leg Complete</button>} */}
       {add && <LegForm close={ () => { addLeg(); }} edit={edit} update={update} />}
     </div>
 

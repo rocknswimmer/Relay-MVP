@@ -16,6 +16,7 @@ const App = () => {
   const [completeLegs, setCompleteLegs] = useState([]);//figure out how to double
   const [runner, setRunner] = useState(false);
   const [organizer, setOrganizer] = useState(false);
+  const [marking, setMarking] = useState(false);
 
   const runnerViewing = () => {
     setRunner(!runner);
@@ -42,6 +43,10 @@ const App = () => {
 
   const displayRunnerInfo = () => {
     setShowRunners(!showRunners);
+  };
+
+  const startMarking = () => {
+    setMarking(!marking);
   };
 
   const getRunnerInfo = () => {
@@ -178,14 +183,16 @@ const App = () => {
       />
 
       <Legs legs={legs1} completed={(leg) => { updateStatus1(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
-      organizer={organizer} runnerView={runner} secondHalf={false} />
+      organizer={organizer} runnerView={runner} secondHalf={false}  marking={marking}  />
 
       <Accordion
       title={'------------ NIGHT BREAK ------------'}
       content={'hopefullly goes at the break'}
       />
       <Legs legs={legs2} completed={(leg) => { updateStatus2(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
-      organizer={organizer} runnerView={runner} secondHalf={true}/>
+      organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} />
+
+      {(organizer || runner) && <button onClick={startMarking}>Mark Leg Complete</button>}
 
       {organizer && <TimeField legs={legs1} update={() => { getLeg1Info(); getLeg2Info();}} runners={runners} secondHalf={false} />}
       {organizer && <TimeField legs={legs2} update={() => { getLeg1Info(); getLeg2Info();}} runners={runners} secondHalf={true} />}
