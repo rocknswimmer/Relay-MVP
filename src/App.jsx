@@ -163,8 +163,8 @@ const App = () => {
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} />
 
       {(runner || organizer) && <button onClick={displayRunnerInfo}>Runner Info</button>}
-      {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }}
-      update={() => { getRunnerInfo(); getLeg1Info(); getLeg2Info();}} organizer={organizer} />}
+      {/* {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }}
+      update={() => { getRunnerInfo(); getLeg1Info(); getLeg2Info();}} organizer={organizer} />} */}
 
 
       <h2>Race Details</h2>
@@ -194,12 +194,12 @@ const App = () => {
 
       {(organizer || runner) && <button onClick={startMarking}>Mark Leg Complete</button>}
 
-      {organizer && <TimeField legs={legs1} update={() => { getLeg1Info(); getLeg2Info();}} runners={runners} secondHalf={false} />}
-      {organizer && <TimeField legs={legs2} update={() => { getLeg1Info(); getLeg2Info();}} runners={runners} secondHalf={true} />}
+      {/* {organizer && <TimeField legs={legs1} update={() => { getLeg1Info(); getLeg2Info();}} runners={runners} secondHalf={false} />}
+      {organizer && <TimeField legs={legs2} update={() => { getLeg1Info(); getLeg2Info();}} runners={runners} secondHalf={true} />} */}
 
-      <h2>Who Is Veiwing?</h2>
+      {/* <h2>Who Is Veiwing?</h2>
       <button onClick={runnerViewing}>Runner</button>
-      <button onClick={organizerViewing}>Organizer</button>
+      <button onClick={organizerViewing}>Organizer</button> */}
     </div>
     );
   };
