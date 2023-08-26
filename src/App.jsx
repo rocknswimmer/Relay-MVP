@@ -9,11 +9,11 @@ import '../public/app.css';
 import TimeField from './time.js';
 
 const App = () => {
-  const [showRunners, setShowRunners] = useState(false);
-  const [runners, setRunners] = useState([]);
+  // const [showRunners, setShowRunners] = useState(false);
+  // const [runners, setRunners] = useState([]);
   const [legs1, setLegs1] = useState([]);
   const [legs2, setLegs2] = useState([]);
-  const [completeLegs, setCompleteLegs] = useState([]);//figure out how to double
+  const [completeLegs, setCompleteLegs] = useState([]);
   const [runner, setRunner] = useState(false);
   const [organizer, setOrganizer] = useState(false);
   const [marking, setMarking] = useState(false);
@@ -27,7 +27,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    getRunnerInfo();
+    //getRunnerInfo();
     getLeg1Info();
     getLeg2Info();
   }, []);
@@ -41,32 +41,32 @@ const App = () => {
     setCompleteLegs(combined.filter((leg) => { return leg.complete }))
   }
 
-  const displayRunnerInfo = () => {
-    setShowRunners(!showRunners);
-  };
+  // const displayRunnerInfo = () => {
+  //   setShowRunners(!showRunners);
+  // };
 
   const startMarking = () => {
     setMarking(!marking);
   };
 
-  const getRunnerInfo = () => {
-    axios.get('/runners')
-      .then((res) => {
-        let sorted = res.data.sort(function compareFn(a, b) {
-          if (a.id < b.id) {
-            return -1;
-          }
-          if (a.id > b.id) {
-            return 1;
-          }
-          return 0;
-        })
-        setRunners(sorted);
-      })
-      .catch((err) => {
-        console.log('error getting runner info: ', err);
-      })
-  };
+  // const getRunnerInfo = () => {
+  //   axios.get('/runners')
+  //     .then((res) => {
+  //       let sorted = res.data.sort(function compareFn(a, b) {
+  //         if (a.id < b.id) {
+  //           return -1;
+  //         }
+  //         if (a.id > b.id) {
+  //           return 1;
+  //         }
+  //         return 0;
+  //       })
+  //       setRunners(sorted);
+  //     })
+  //     .catch((err) => {
+  //       console.log('error getting runner info: ', err);
+  //     })
+  // };
 
   // const getLegInfo = () => {
   //   axios.get('/legs')
@@ -162,10 +162,10 @@ const App = () => {
       <h1>Virtual Relay</h1>
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} />
 
-      {(runner || organizer) && <button onClick={displayRunnerInfo}>Runner Info</button>}
+      {/* {(runner || organizer) && <button onClick={displayRunnerInfo}>Runner Info</button>} */}
       {/* {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }}
       update={() => { getRunnerInfo(); getLeg1Info(); getLeg2Info();}} organizer={organizer} />} */}
-
+      {(organizer || runner) && <button onClick={startMarking}>Mark Leg Complete!</button>}
 
       <h2>Race Details</h2>
 
@@ -192,7 +192,7 @@ const App = () => {
       <Legs legs={legs2} completed={(leg) => { updateStatus2(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
       organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} />
 
-      {(organizer || runner) && <button onClick={startMarking}>Mark Leg Complete</button>}
+
 
       {/* {organizer && <TimeField legs={legs1} update={() => { getLeg1Info(); getLeg2Info();}} runners={runners} secondHalf={false} />}
       {organizer && <TimeField legs={legs2} update={() => { getLeg1Info(); getLeg2Info();}} runners={runners} secondHalf={true} />} */}
