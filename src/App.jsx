@@ -121,7 +121,7 @@ const App = () => {
 
       <Accordion
       title={'------------ NIGHT BREAK ------------'}
-      content={'hopefullly goes at the break'}
+      content={'hopefullly goes at the break'} {/* put runner login here to be always available but hidden */}
       />
       <Legs legs={legs2} completed={(leg) => { updateStatus2(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
       organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} />
