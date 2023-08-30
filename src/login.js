@@ -4,6 +4,12 @@ import {useState} from 'react';
 const LoginForm = (props) => {
   const [runner, setRunner] = useState('');
 
+  /*
+  once input sanitized, maybe runner number is from a drop down instead of input
+  localStorage.runner = runner
+  add conditional for marking that leg.runner = runner
+  */
+
   return (
 
       <div>
