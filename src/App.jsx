@@ -13,12 +13,15 @@ const App = () => {
   const [legs1, setLegs1] = useState([]);
   const [legs2, setLegs2] = useState([]);
   const [completeLegs, setCompleteLegs] = useState([]);
-  const [runner, setRunner] = useState(false);
+  const [runner, setRunner] = useState(true);
   const [organizer, setOrganizer] = useState(false);
   const [marking, setMarking] = useState(false);
+  const possible = "1 2 3 4 5 6 7 8 9 10".split(" ");
 
   const runnerViewing = () => {
-    setRunner(!runner);
+    setRunner(false);
+    setTimeout(() => {setRunner(true);}, "1000");//toggle marking button on login
+
   };
 
   const organizerViewing = () => {
@@ -106,7 +109,7 @@ const App = () => {
       <h1>Virtual Relay</h1>
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} />
 
-      {(organizer || runner) && <button onClick={startMarking}>Mark Leg Complete!</button>}
+      {(possible.indexOf(localStorage.runner) !== -1) && <button onClick={startMarking}>Mark Leg Complete!</button>}
 
       <h2>Race Details</h2>
 
@@ -122,7 +125,7 @@ const App = () => {
 
       <Accordion
       title={'------------ NIGHT BREAK ------------'}
-      content={<div><LoginField  /></div>}
+      content={<div><LoginField update={runnerViewing} /></div>}
       />
       <Legs legs={legs2} completed={(leg) => { updateStatus2(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
       organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} />

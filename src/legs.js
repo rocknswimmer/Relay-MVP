@@ -59,7 +59,7 @@ const Legs = (props) => {
   return (
     <div id='leg-feed'>
       {legs.map((leg, i) => {
-        return (<div className="accordion-fake-title" key={i}>{marking /*add something like once login save figured out && (organizer || runner = leg runner)*/ && <button onClick={() => { completed(leg.id); }}>complete</button>}<Accordion
+        return (<div className="accordion-fake-title" key={i}>{marking && localStorage.runner === (leg.runner_id + "") && <button onClick={() => { completed(leg.id); }}>complete</button>}<Accordion
           complete={leg.complete}
           title={<div>{` Leg ${(secondHalf ? leg.id + 17 : leg.id)} | ${leg.runner.slice(0,3)} | ${leg.start_time} | ${leg.end_time} | ${leg.dif}`}</div>}
           content={
