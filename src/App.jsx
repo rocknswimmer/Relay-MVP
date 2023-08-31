@@ -7,6 +7,7 @@ import RunnersInfo from './runners.js';
 import Legs from './legs.js';
 import '../public/app.css';
 import TimeField from './time.js';
+import LoginField from './login.js';
 
 const App = () => {
   const [legs1, setLegs1] = useState([]);
@@ -121,7 +122,7 @@ const App = () => {
 
       <Accordion
       title={'------------ NIGHT BREAK ------------'}
-      content={'hopefullly goes at the break'} {/* put runner login here to be always available but hidden */}
+      content={<div><LoginField  /></div>}
       />
       <Legs legs={legs2} completed={(leg) => { updateStatus2(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
       organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} />

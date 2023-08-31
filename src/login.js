@@ -13,11 +13,11 @@ const LoginForm = (props) => {
   return (
 
       <div>
-        <label>Runner Number</label>
-        <input type='text' placeholder='ex. 1' onChange={onRunner}/>
+        <label>User Name</label>
+        <input type='text' placeholder='ex. coolRunner23' onChange={console.log("probs better practice")}/>
         <br/>
         <label>Password</label>
-        <input type='text' placeholder='ex. pass1234' onChange={onDistance}/>
+        <input type='text' placeholder='ex. pass1234' onChange={console.log("probs better practice")}/>
         <br/>
         <button onClick={console.log("need submit function")}>Login</button>
       </div>
