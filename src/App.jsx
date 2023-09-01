@@ -16,6 +16,7 @@ const App = () => {
   const [runner, setRunner] = useState(true);
   const [organizer, setOrganizer] = useState(false);
   const [marking, setMarking] = useState(false);
+  //const [pacific, setPacific] = useState(false);
   const possible = "1 2 3 4 5 6 7 8 9 10".split(" ");
 
   const runnerViewing = () => {
@@ -109,11 +110,15 @@ const App = () => {
       <h1>Virtual Relay</h1>
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} />
 
-      {(possible.indexOf(localStorage.runner) !== -1) && <button onClick={startMarking}>Mark Leg Complete!</button>}
+
 
       <h2>Race Details</h2>
+      <div className="button-container">
+      {(possible.indexOf(localStorage.runner) !== -1) && <button onClick={startMarking}>Mark Leg Complete!</button>}
 
-      {/* Pacific switch here */}
+      {/* proper update on click for button and time displayed change */}
+      <button onClick={() => {localStorage.timezone = localStorage.timezone === "pacific" ? "" : "pacific"}} >{`Switch to ${localStorage.timezone === "pacific" ? "Eastern" : "Pacific"}`}</button>
+      </div>
 
       <Accordion
       title={'Leg # | Runner | Start | Finish | Race Difference'}
