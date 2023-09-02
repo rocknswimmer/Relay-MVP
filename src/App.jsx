@@ -130,6 +130,7 @@ const App = () => {
       <Accordion
       title={'Leg # | Runner | Start | Finish | Race Difference'}
       content={'The Start column contains the expected start time. The Finish column contains the expected finish time. The Race Difference column contains the difference from the actual race time to the expected race time.'}
+      even={true}
       />
 
       <Legs legs={legs1} completed={(leg) => { updateStatus1(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
@@ -138,6 +139,7 @@ const App = () => {
       <Accordion
       title={'------------ NIGHT BREAK ------------'}
       content={<div><LoginField update={runnerViewing} /></div>}
+      even={true}
       />
       <Legs legs={legs2} completed={(leg) => { updateStatus2(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
       organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} />
