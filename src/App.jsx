@@ -114,7 +114,7 @@ const App = () => {
 
   return (
     <div id="app">
-      <h1>Virtual Relay</h1>
+      <h1>Waileys 2023</h1>
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} />
 
 

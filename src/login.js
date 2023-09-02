@@ -5,7 +5,8 @@ const LoginForm = (props) => {
   const {update} = props;
   const [runner, setRunner] = useState('');
   const [pass, setPass] = useState('');
-  const allowed = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+  const allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+  const salt = 'salt123';
 
   /*
   once input sanitized, maybe runner number is from a drop down instead of input
@@ -13,6 +14,15 @@ const LoginForm = (props) => {
   add conditional for marking that leg.runner = runner
 
   */
+  String.prototype.hashCode = function () {
+    var hash = 0;
+    for (var i = 0; i < this.length; i++) {
+      var char = this.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // Convert to 32bit integer
+    }
+    return hash;
+  }
 
   const onRunner = (e) => {
     if(e.target.value.split('').every((char) => {return allowed.indexOf(char) !== -1 })){
@@ -26,7 +36,7 @@ const LoginForm = (props) => {
   const onPass = (e) => {
     if(e.target.value.split('').every((char) => {return allowed.indexOf(char) !== -1 })){
       //will need to salt and hash, maybe even before this part ...
-      setPass(e.target.value);
+      setPass(e.target.value + salt);
     }  else {
       alert('Password can only contain letters and numbers');
     }
@@ -34,8 +44,8 @@ const LoginForm = (props) => {
   };
 
   const onLogin = () => {
-    if(pass === "test"){
-      localStorage.runner = runner; // need to sanitaize
+    if(pass.hashCode() === -458636246){
+      localStorage.runner = runner;
       update();
     }
   }
