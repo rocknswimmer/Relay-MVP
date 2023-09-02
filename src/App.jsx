@@ -21,7 +21,7 @@ const App = () => {
 
   const runnerViewing = () => {
     setRunner(false);
-    setTimeout(() => {setRunner(true);}, "1000");//toggle marking button on login
+    setTimeout(() => {setRunner(true);}, "0");//toggle marking button on login
 
   };
 
@@ -105,6 +105,13 @@ const App = () => {
       })
   };
 
+  const timeChange = () => {
+    localStorage.timezone = localStorage.timezone === "pacific" ? "" : "pacific";
+    //setTimeout(() => {localStorage.timezone = localStorage.timezone === "pacific" ? "" : "pacific";}, "1000");
+    runnerViewing();
+
+  }
+
   return (
     <div id="app">
       <h1>Virtual Relay</h1>
@@ -117,7 +124,7 @@ const App = () => {
       {(possible.indexOf(localStorage.runner) !== -1) && <button onClick={startMarking}>Mark Leg Complete!</button>}
 
       {/* proper update on click for button and time displayed change */}
-      <button onClick={() => {localStorage.timezone = localStorage.timezone === "pacific" ? "" : "pacific"}} >{`Switch to ${localStorage.timezone === "pacific" ? "Eastern" : "Pacific"}`}</button>
+      {runner && <button onClick={timeChange} >{`Switch to ${localStorage.timezone === "pacific" ? "Eastern" : "Pacific"}`}</button>}
       </div>
 
       <Accordion

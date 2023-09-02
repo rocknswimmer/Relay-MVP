@@ -61,7 +61,7 @@ const Legs = (props) => {
       {legs.map((leg, i) => {
         return (<div className="accordion-fake-title" key={i}>{marking && localStorage.runner === (leg.runner_id + "") && <button onClick={() => { completed(leg.id); }}>complete</button>}<Accordion
           complete={leg.complete}
-          title={<div>{` Leg ${(secondHalf ? leg.id + 17 : leg.id)} | ${leg.runner.slice(0,3)} | ${leg.start_time} | ${leg.end_time} | ${leg.dif}`}</div>}
+          title={<div>{` Leg ${(secondHalf ? leg.id + 17 : leg.id)} | ${leg.runner.slice(0,3)} | ${localStorage.timezone === "pacific" ? leg.pacific_start : leg.start_time} | ${localStorage.timezone === "pacific" ? leg.pacific_end : leg.end_time} | ${leg.dif}`}</div>}
           content={
             <div>
               <h1>{leg.runner}</h1>
