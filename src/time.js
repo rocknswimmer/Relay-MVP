@@ -3,7 +3,7 @@ import {useState} from 'react';
 import axios from 'axios';
 
 const TimeField = (props) => {
-  const {legs, update, runners, secondHalf} = props;
+  const {legs, update, secondHalf} = props;
   const [startTime, setStartTime] = useState('');
   const approvedTimeValues = '1234567890'.split('')
 
@@ -32,7 +32,7 @@ const TimeField = (props) => {
 
         currStart = previous;
 
-        currLeg = Math.floor(leg.distance * runners[leg.runner_id - 1].pace * 60000);// distance * pace/mile in mins * 60 sec * millisecs
+        currLeg = Math.floor(leg.distance * leg.pace * 60000);// distance * pace/mile in mins * 60 sec * millisecs
         currEnd = currStart + currLeg;
         previous = currEnd;
 

@@ -38,6 +38,8 @@ app.get('/runners', (req, res) => {
 //   })
 // });
 
+
+
 app.get('/legs1', (req, res) => {
   pool.query('select id, (select runner from runners where id = legs1.runner) as runner, (select pace from runners where id = legs1.runner) as pace, distance, complete, start_time, end_time, pacific_start, pacific_end, dif, runner as runner_id from legs1', (err, data) => {
     if (err) {
@@ -93,57 +95,57 @@ app.put('/:leg/complete2', (req, res) => {
 
 });
 
-app.put('/runner', (req, res) => {
-  const {runner, phone, pace, runnerID} = req.body;
+// app.put('/runner', (req, res) => {
+//   const {runner, phone, pace, runnerID} = req.body;
 
-  pool.query('update runners set runner = $1, phone = $2, pace = $3  where id = $4 returning *;', [runner, phone, pace, runnerID], (err, data) => {
-    if (err) {
-      console.log('error updating runner info: ', err);
-      throw err;
-    }
-    res.send('updated runner info');
-  })
+//   pool.query('update runners set runner = $1, phone = $2, pace = $3  where id = $4 returning *;', [runner, phone, pace, runnerID], (err, data) => {
+//     if (err) {
+//       console.log('error updating runner info: ', err);
+//       throw err;
+//     }
+//     res.send('updated runner info');
+//   })
 
-});
+// });
 
-app.post('/runner/new', (req, res) => {
-  const {runner, phone, pace} = req.body;
-  pool.query('insert into runners (runner, phone, pace) values ($1, $2, $3) returning *;', [runner, phone, pace], (err, data) => {
-    if (err) {
-      console.log('error adding runner: ', err);
-      throw err;
-    }
-    res.send('added new runner');
-  })
-})
+// app.post('/runner/new', (req, res) => {
+//   const {runner, phone, pace} = req.body;
+//   pool.query('insert into runners (runner, phone, pace) values ($1, $2, $3) returning *;', [runner, phone, pace], (err, data) => {
+//     if (err) {
+//       console.log('error adding runner: ', err);
+//       throw err;
+//     }
+//     res.send('added new runner');
+//   })
+// })
 
-app.put('/leg', (req, res) => {
-  const {runner, distance, legID} = req.body;
+// app.put('/leg', (req, res) => {
+//   const {runner, distance, legID} = req.body;
 
-  pool.query('update legs set runner = $1, distance = $2  where id = $3 returning *;', [runner, distance, legID], (err, data) => {
-    if (err) {
-      console.log('error updating leg info: ', err);
-      throw err;
-    }
-    res.send('updated leg info');
-  })
-  // console.log(runner, distance, legID);
-  // res.send('hitting server editing leg');
+//   pool.query('update legs set runner = $1, distance = $2  where id = $3 returning *;', [runner, distance, legID], (err, data) => {
+//     if (err) {
+//       console.log('error updating leg info: ', err);
+//       throw err;
+//     }
+//     res.send('updated leg info');
+//   })
+//   // console.log(runner, distance, legID);
+//   // res.send('hitting server editing leg');
 
-});
+// });
 
-app.post('/leg/new', (req, res) => {
-  const {runner, distance} = req.body;
-  pool.query('insert into legs (runner, distance) values ($1, $2) returning *;', [runner, distance], (err, data) => {
-    if (err) {
-      console.log('error adding leg: ', err);
-      throw err;
-    }
-    res.send('added new leg');
-  })
-  // console.log(runner, distance);
-  // res.send('hitting server adding leg');
-})
+// app.post('/leg/new', (req, res) => {
+//   const {runner, distance} = req.body;
+//   pool.query('insert into legs (runner, distance) values ($1, $2) returning *;', [runner, distance], (err, data) => {
+//     if (err) {
+//       console.log('error adding leg: ', err);
+//       throw err;
+//     }
+//     res.send('added new leg');
+//   })
+//   // console.log(runner, distance);
+//   // res.send('hitting server adding leg');
+// })
 
 //need to make l1 and 2 for time
 // app.put('/time', (req, res) => {
@@ -159,6 +161,8 @@ app.post('/leg/new', (req, res) => {
 //     res.send(data);
 //   })
 // })
+
+/* */
 app.put('/time1', (req, res) => {
   // console.log(req.body);
   // res.send(req.body);
