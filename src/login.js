@@ -53,10 +53,10 @@ const LoginForm = (props) => {
   return (
 
       <div>
-        <label>User</label>
+        <label>User:</label>
         <input type='text' placeholder='ex. coolRunner23' onChange={onRunner}/>
         <br/>
-        <label>Password</label>
+        <label>Password:</label>
         <input type='text' placeholder='ex. pass1234' onChange={onPass}/>
         <br/>
         <button onClick={onLogin}>Login</button>

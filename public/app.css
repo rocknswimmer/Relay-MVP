@@ -24,6 +24,14 @@ button {
   margin: 7px;
 }
 
+label {
+  padding: 10px;
+}
+
+input {
+  margin: 10px;
+}
+
 /* .flipswitch {
   position: relative;
   width: 150px;
