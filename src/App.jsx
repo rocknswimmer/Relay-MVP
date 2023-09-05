@@ -120,6 +120,7 @@ const App = () => {
 
 
       <h2>Race Details</h2>
+      <h3>{localStorage.timezone === "pacific" ? "Pacific Time" : "Eastern Time"}</h3>
       <div className="button-container">
       {(possible.indexOf(localStorage.runner) !== -1) && <button onClick={startMarking}>Mark Leg Complete!</button>}
 
