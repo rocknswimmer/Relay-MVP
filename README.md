@@ -23,6 +23,6 @@ Organizer walk through:
 
 In the organizer view, you now have the ability to add and edit runners, legs and the start time for the relay. Now when you open the runner info modal, a button will apear at the bottom allowing you to add runners. To edit a runners info open their accordion in the runner info modal and click the edit runner button. The same hold true for how to edit legs, now when you open the leg accordions a button to edit exists. The button to add a leg in underneath the legs next to the mark complete button. Just below that is the final feature. I updated the relay start time to take a user friendly date time and convert it to unix to for the calculations. Watch all the leg time estimates update when you change the day and time, its probably my favorite part of the app.
 
-Since I am the organizer, and this app is designed to be used by very few people, the features and styles may not change much as I continue preping it for the race, but this is undoubtedly much more runner and organizer friendly than storing the information on spread sheets.
+As I prepare for using this during the relay, I have taken out a lot of the fancy feature for security and because they are unnecessary for the apps needs. After the events I will log the actions taken, probably needlessly, to ensure a smooth experience for my runners.
 
 Thanks for reading
