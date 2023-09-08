@@ -223,7 +223,7 @@ app.put('/dif2', (req, res) => {
   // res.send(req.body);
   const {dif, legID} = req.body;
 
-  pool.query('update legs2 set dif = $1 where id = $2 returning *;', [dif + ' minutes', legID], (err, data) => {
+  pool.query('update legs2 set dif = $1 where id = $2 returning *;', [dif, legID], (err, data) => {
     if (err) {
       console.log('error updating leg2 dif info: ', err);
       throw err;
