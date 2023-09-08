@@ -25,6 +25,6 @@ In the organizer view, you now have the ability to add and edit runners, legs an
 
 As I prepare for using this during the relay, I have taken out a lot of the fancy feature for security and because they are unnecessary for the apps needs. After the events I will log the actions taken, probably needlessly, to ensure a smooth experience for my runners.
 
-deploy went fairly smoothly, should be able to get a back up going in 30 minutes if needed
+deploy went fairly smoothly, should be able to get a back up going in 30 minutes if needed. successful tests before sending to my runners.
 
 Thanks for reading
