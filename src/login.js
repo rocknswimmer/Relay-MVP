@@ -48,6 +48,8 @@ const LoginForm = (props) => {
       localStorage.runner = runner;
       update();
       location.reload();
+    } else {
+      alert('Incorrect UserName or Password, please check your upper and lowercase letters and try again, or reach out for help')
     }
   }
 

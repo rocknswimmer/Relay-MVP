@@ -17,7 +17,7 @@ const App = () => {
   const [organizer, setOrganizer] = useState(false);// adjust to input time
   const [marking, setMarking] = useState(false);
   //const [pacific, setPacific] = useState(false);
-  const possible = "1 2 3 4 5 6 7 8 9 10".split(" ");
+  const possible = "1 2 3 4 5 6 7 8 9 10 11 12".split(" ");
 
   const runnerViewing = () => {
     setRunner(false);
