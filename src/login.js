@@ -47,6 +47,7 @@ const LoginForm = (props) => {
     if(pass.hashCode() === -458636246){
       localStorage.runner = runner;
       update();
+      location.reload();
     }
   }
 

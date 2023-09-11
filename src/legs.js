@@ -59,10 +59,11 @@ const Legs = (props) => {
   return (
     <div id='leg-feed'>
       {legs.map((leg, i) => {
-        return (<div className="accordion-fake-title" key={i}>{marking && localStorage.runner === (leg.runner_id + "") && <button onClick={() => { completed(leg.id); }}>complete</button>}<Accordion
+        return(
+          <Accordion
           even={leg.id % 2 === 0}
           complete={leg.complete}
-          title={<div>{` Leg ${(secondHalf ? leg.id + 17 : leg.id)} | ${leg.runner.slice(0,3)} | ${localStorage.timezone === "pacific" ? leg.pacific_start : leg.start_time} | ${localStorage.timezone === "pacific" ? leg.pacific_end : leg.end_time} | ${leg.dif}`}</div>}
+          title={<div className="accordion-fake-title">{(marking && localStorage.runner === (leg.runner_id + "")) ? <button onClick={() => { completed(leg.id); }}>{leg.complete ? "undo early completion": `Mark leg ${(secondHalf ? leg.id + 17 : leg.id)} complete`}</button> :` Leg ${(secondHalf ? leg.id + 17 : leg.id)} | ${leg.runner.slice(0,3)} | ${localStorage.timezone === "pacific" ? leg.pacific_start : leg.start_time} | ${localStorage.timezone === "pacific" ? leg.pacific_end : leg.end_time} | ${leg.dif}`}</div>}
           content={
             <div>
               <h1>{leg.runner}</h1>
@@ -81,14 +82,42 @@ const Legs = (props) => {
               </div>}
             </div>
           }
-        /></div>)
+          key={i}
+        />
+        )
       })}
-      {/* {organizer && legs.length <= 32 && <button onClick={addLeg}>Add a New Leg</button>} */}
-      {/* {(organizer || runnerView) && <button onClick={startMarking}>Mark Leg Complete</button>} */}
-      {add && <LegForm close={ () => { addLeg(); }} edit={edit} update={update} />}
     </div>
 
   )
 }
 
 export default Legs;
+
+// {legs.map((leg, i) => {
+//         return (<div className="accordion-fake-title" key={i}>{marking && localStorage.runner === (leg.runner_id + "") && <button onClick={() => { completed(leg.id); }}>complete</button>}<Accordion
+//           even={leg.id % 2 === 0}
+//           complete={leg.complete}
+//           title={<div>{` Leg ${(secondHalf ? leg.id + 17 : leg.id)} | ${leg.runner.slice(0,3)} | ${localStorage.timezone === "pacific" ? leg.pacific_start : leg.start_time} | ${localStorage.timezone === "pacific" ? leg.pacific_end : leg.end_time} | ${leg.dif}`}</div>}
+//           content={
+//             <div>
+//               <h1>{leg.runner}</h1>
+//               <h2>{`${leg.distance} miles`}</h2>
+//               <h2>Pace: {leg.pace}</h2>
+//               {organizer && <div>
+//                 <button onClick={editLeg}>Edit Leg</button>
+//                 {/* <button onClick={} >Delete Leg</button> */}
+//                 </div>}
+//               {edit && <LegForm close={ () => { editLeg(); }} edit={edit} update={update} legID={leg.id} />}
+
+//               {organizer &&
+//               <div>
+//                 <input type="text" placeholder="ex. +1, for 1 minute slow" onChange={onDiff} />
+//                 <button onClick={() => {editDiff(leg)}}>Update Difference</button>
+//               </div>}
+//             </div>
+//           }
+//         /></div>)
+//       })}
+//       {/* {organizer && legs.length <= 32 && <button onClick={addLeg}>Add a New Leg</button>} */}
+//       {/* {(organizer || runnerView) && <button onClick={startMarking}>Mark Leg Complete</button>} */}
+//       {add && <LegForm close={ () => { addLeg(); }} edit={edit} update={update} />}

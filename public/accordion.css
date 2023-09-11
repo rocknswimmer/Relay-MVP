@@ -13,6 +13,7 @@
   /* background-color: #126ed8; */
   color: rgb(254, 253, 253);
   width: 100%;
+  align-items: center;
 }
 .accordion-item {
   width: 100%;
