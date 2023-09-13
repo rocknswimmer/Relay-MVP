@@ -53,7 +53,7 @@ const ProgressBar = (props) => {
   return (
     <div style={gif ? containerStylesGif : containerStyles}>
       <div style={gif ? fillerStylesGif : fillerStyles}>
-        <div style={labelStyles}>{gif && <img src="runner.gif" style={gifStyle}  ></img>}{!gif && `${Math.floor(completed)}% complete`}</div>
+        <div style={labelStyles}>{gif && <img src="runner.gif" style={gifStyle} alt="running stick figure"  ></img>}{!gif && `${Math.floor(completed)}% complete`}</div>
       </div>
     </div>
   );

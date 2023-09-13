@@ -119,7 +119,7 @@ const App = () => {
       {secret && ((completeLegs.length/(legs1.length + legs2.length)) * 100) > 0 && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={true} />}
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={false} />
 
-
+      {/* photos here  */}
 
 
       <h2>Race Details</h2>
