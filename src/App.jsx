@@ -18,6 +18,7 @@ const App = () => {
   const [marking, setMarking] = useState(false);
   //const [pacific, setPacific] = useState(false);
   const possible = "1 2 3 4 5 6 7 8 9 10 11 12".split(" ");
+  const secret = false;
 
   const runnerViewing = () => {
     setRunner(false);
@@ -115,7 +116,8 @@ const App = () => {
   return (
     <div id="app">
       <h1>Waileys 2023</h1>
-      <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} />
+      {secret && ((completeLegs.length/(legs1.length + legs2.length)) * 100) > 0 && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={true} />}
+      <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={false} />
 
 
 
