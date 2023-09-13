@@ -32,6 +32,14 @@ input {
   margin: 10px;
 }
 
+p {
+  background-color: rgb(255, 132, 0);
+  color: black;
+}
+
+a {
+  color: blue;
+}
 /* .flipswitch {
   position: relative;
   width: 150px;

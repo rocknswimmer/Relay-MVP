@@ -117,6 +117,8 @@ const App = () => {
       <h1>Waileys 2023</h1>
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} />
 
+      <p>This will be a basic back up site if the photos don't work for you, or you are not on wifi.  <a href="http://107.23.19.214:3008/">Link to Fancier version</a> will go here once up and running, but now just links back here</p>
+
 
 
       <h2>Race Details</h2>
