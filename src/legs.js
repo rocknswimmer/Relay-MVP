@@ -61,14 +61,14 @@ const Legs = (props) => {
       {legs.map((leg, i) => {
         return(
           <Accordion
-          even={leg.id % 2 === 0}
+          even={secondHalf ? leg.id % 2 === 1 : leg.id % 2 === 0}
           complete={leg.complete}
           title={<div className="accordion-fake-title">
             {(marking && localStorage.runner === (leg.runner_id + "")) ?
-          <button onClick={() => { completed(leg.id); }}>{leg.complete ? "undo early completion": `Mark leg ${(secondHalf ? leg.id + 17 : leg.id)} complete`}</button>
+          <button onClick={() => { completed(leg.id); }}>{leg.complete ? "undo early completion": `Mark leg ${(secondHalf ? leg.id + 18 : leg.id)} complete`}</button>
           : (leg.runner_id === 7) ?
-          `Leg ${(secondHalf ? leg.id + 17 : leg.id)} | Runners Break`
-          :` Leg ${(secondHalf ? leg.id + 17 : leg.id)} | ${leg.runner.slice(0,3)} | ${localStorage.timezone === "pacific" ? leg.pacific_start : leg.start_time} | ${localStorage.timezone === "pacific" ? leg.pacific_end : leg.end_time} | ${leg.dif}`}
+          `Leg ${(secondHalf ? leg.id + 18 : leg.id)} | Runners Break`
+          :` Leg ${(secondHalf ? leg.id + 18 : leg.id)} | ${leg.runner.slice(0,3)} | ${localStorage.timezone === "pacific" ? leg.pacific_start : leg.start_time} | ${localStorage.timezone === "pacific" ? leg.pacific_end : leg.end_time} | ${leg.dif}`}
           </div>}
 
           content={

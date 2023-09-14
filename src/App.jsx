@@ -116,7 +116,7 @@ const App = () => {
   return (
     <div id="app">
       <h1>Waileys 2023</h1>
-      {secret && ((completeLegs.length/(legs1.length + legs2.length)) * 100) > 0 && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={true} />}
+      {secret && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={true} />}
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={false} />
 
       {/* photos here  */}
@@ -143,7 +143,7 @@ const App = () => {
       <Accordion
       title={'------------ NIGHT BREAK ------------'}
       content={<div><LoginField update={runnerViewing} /></div>}
-      even={true}
+      even={false}
       />
       <Legs legs={legs2} completed={(leg) => { updateStatus2(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
       organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} />
