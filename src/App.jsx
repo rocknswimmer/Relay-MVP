@@ -20,6 +20,7 @@ const App = () => {
   //const [pacific, setPacific] = useState(false);
   const possible = "1 2 3 4 5 6 7 8 9 10 11 12".split(" ");
   const secret = false;
+  const running = false;
 
   const runnerViewing = () => {
     setRunner(false);
@@ -117,7 +118,7 @@ const App = () => {
   return (
     <div id="app">
       <h1>Waileys 2023</h1>
-      {secret && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={true} />}
+      {running && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={true} />}
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={false} />
 
       {/* photos here  */}
@@ -126,8 +127,13 @@ const App = () => {
 
       <h2>Race Details</h2>
       <h3>{localStorage.timezone === "pacific" ? "Pacific Time" : "Eastern Time"}</h3>
+
+      {/* {!running && <p className="disabled-message">marking button currently disabled to prevent early unlocks</p>} */}
+
       <div className="button-container">
+        {/* running && */}
       {(possible.indexOf(localStorage.runner) !== -1) && <button onClick={startMarking}>Mark Leg Complete!</button>}
+
 
       {/* proper update on click for button and time displayed change */}
       {runner && <button onClick={timeChange} >{`Switch to ${localStorage.timezone === "pacific" ? "Eastern" : "Pacific"}`}</button>}

@@ -37,6 +37,15 @@ input {
   height: 1000px;
 }
 
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.disabled-message {
+  background-color: red;
+}
 /* .flipswitch {
   position: relative;
   width: 150px;
