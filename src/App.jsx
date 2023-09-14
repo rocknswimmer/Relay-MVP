@@ -8,6 +8,7 @@ import Legs from './legs.js';
 import '../public/app.css';
 import TimeField from './time.js';
 import LoginField from './login.js';
+import ImageContainer from './imageContainer.js';
 
 const App = () => {
   const [legs1, setLegs1] = useState([]);
@@ -120,6 +121,7 @@ const App = () => {
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={false} />
 
       {/* photos here  */}
+      <ImageContainer progress={(completeLegs.length/(legs1.length + legs2.length)) * 100} secret={secret} />
 
 
       <h2>Race Details</h2>
