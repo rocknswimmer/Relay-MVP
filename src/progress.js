@@ -37,12 +37,14 @@ const ProgressBar = (props) => {
     transition: 'width 1s ease-in-out',
     textAlign: 'right',
     //overflow: 'hidden'
+
   }
 
   const labelStyles = {
     padding: 5,
     color: 'white',
     fontWeight: 'bold',
+    //width: 'max-content',
   }
 
   const gifStyle = {

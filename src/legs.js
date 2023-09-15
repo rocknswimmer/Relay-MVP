@@ -64,7 +64,7 @@ const Legs = (props) => {
           even={secondHalf ? leg.id % 2 === 1 : leg.id % 2 === 0}
           complete={leg.complete}
           title={<div className="accordion-fake-title">
-            {(marking && localStorage.runner === (leg.runner_id + "")) ?
+            {(marking && (localStorage.runner === (leg.runner_id + "") || localStorage.runner === "3")) ?
           <button onClick={() => { completed(leg.id); }}>{leg.complete ? "undo early completion": `Mark leg ${(secondHalf ? leg.id + 18 : leg.id)} complete`}</button>
           : (leg.runner_id === 7) ?
           `Leg ${(secondHalf ? leg.id + 18 : leg.id)} | Runners Break`
