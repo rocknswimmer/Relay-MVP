@@ -128,10 +128,8 @@ const App = () => {
       <h2>Race Details</h2>
       <h3>{localStorage.timezone === "pacific" ? "Pacific Time" : "Eastern Time"}</h3>
 
-      {/* {!running && <p className="disabled-message">marking button currently disabled to prevent early unlocks</p>} */}
 
       <div className="button-container">
-        {/* running && */}
       {(possible.indexOf(localStorage.runner) !== -1) && <button onClick={startMarking}>Mark Leg Complete!</button>}
 
 
