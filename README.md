@@ -5,7 +5,7 @@ While working to improve the app for use after the original deadline, I decided 
 
 Demo: [DEMO WEBSITE](http://107.23.19.214:3001/)
 
-Time Update Gif: recorded on phone since that is how my runners will experience it
+Time Update Gif: Check out how the promise chain updates the database when you supply a start time
 
 https://user-images.githubusercontent.com/108627643/234087039-0dac090c-1f49-456c-b1c1-6a6ba56d6998.mp4
 
