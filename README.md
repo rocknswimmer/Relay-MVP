@@ -25,4 +25,6 @@ In the organizer view, you now have the ability to add and edit runners, legs an
 
 As I prepare for using this during the relay, I have taken out a lot of the features for security and because they are unnecessary for the final needs. After the event I will log the actions taken to ensure a smooth experience for my runners.
 
+One of the considerations I had was runners being on a trail using cellular data. To reduce data useage, I left up the beta version I used for initial user testing with a link to the version I added photos to.
+
 Thanks for reading
