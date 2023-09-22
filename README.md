@@ -27,4 +27,6 @@ As I prepare for using this during the relay, I have taken out a lot of the feat
 
 One of the considerations I had was runners being on a trail using cellular data. To reduce data useage, I left up the beta version I used for initial user testing with a link to the version I added photos to.
 
+I kept the password simple for beta testing, but ran into the issue of mobile default capitalizing the first letter messing up my users attempts to enter the password. When it came time for a more robust password, I started with a number to avoid the capitalization issue.
+
 Thanks for reading
