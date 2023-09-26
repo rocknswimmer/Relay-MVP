@@ -29,4 +29,6 @@ One of the considerations I had was runners being on a trail using cellular data
 
 I kept the password simple for beta testing, but ran into the issue of mobile default capitalizing the first letter messing up my users attempts to enter the password. When it came time for a more robust password, I started with a number to avoid the capitalization issue.
 
+Some of the quick solutions I implemented involved adding a refresh after getting back the HTTP response. While this quick solution worked, for a larger scale app I would prefer a less exessive solution that just utalizes react. Whether throttling button clicks, closing the accodion the login is in, or a more elegant solution. I did not have time to implement these durring the 36 hours while also running, so I am glad the quick solution came to mind.
+
 Thanks for reading
