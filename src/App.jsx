@@ -35,6 +35,7 @@ const App = () => {
   useEffect(() => {
     getLeg1Info();
     getLeg2Info();
+    //getMapper();
   }, []);
 
   useEffect(() => {
@@ -86,6 +87,64 @@ const App = () => {
         console.log('error getting leg info: ', err);
       })
   };
+
+  // const getMapper = () => {
+  //   const allTogether = [1,2,3,4].map((num) => {
+  //     if(num % 2 === 1){
+  //       return axios.get('/legs1')
+  //       .then((res) => {
+  //         let filtered1 = res.data.filter((leg) => {
+
+  //           return leg.runner === "Andy"
+  //         })
+  //         let filtered2 = res.data.filter((leg) => {
+
+  //           return leg.runner === "Megan"
+  //         })
+  //         return [filtered1, filtered2];
+  //       })
+  //       .catch((err) => {
+  //         console.log('error getting leg1 info: ', err);
+  //       })
+  //     } else {
+  //       return axios.get('/legs2')
+  //       .then((res) => {
+  //         let filtered1 = res.data.filter((leg) => {
+
+  //           return leg.runner === "Andy"
+  //         })
+  //         let filtered2 = res.data.filter((leg) => {
+
+  //           return leg.runner === "Megan"
+  //         })
+  //         return [filtered1, filtered2];
+
+  //       })
+  //       .catch((err) => {
+  //         console.log('error getting leg1 info: ', err);
+  //       })
+  //     }
+  //   })
+
+  //   Promise.all(allTogether)
+  //     .then((data) => {
+  //       console.log("allTogetherData")
+  //       console.log(data)
+  //       let all1 = []
+  //       let all2 = []
+  //       for(let i = 0;i < data.length; i++){
+  //         let curr = data[i]
+  //         let add1 = curr[0]
+  //         let add2 = curr[1]
+  //       //   console.log(add1)
+  //       // console.log(add2)
+  //         all1 = all1.concat(add1)
+  //         all2 = all2.concat(add2)
+  //       }
+  //       console.log(all1)
+  //       console.log(all2)
+  //     })
+  // }
 
   const updateStatus2 = (leg) => {
     axios.put('/:leg/complete2', {'leg': leg})
