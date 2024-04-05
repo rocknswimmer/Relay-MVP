@@ -27,7 +27,7 @@ const RunnerInfo = (props) => {
   const updateRunner = () => {
     if(((runner.length > 0 && runner.length < 26) && runner.split('').every((char) => {return approvedRunnerNameValues.indexOf(char.toLowerCase()) !== -1}))
     && (phone.length === 10 && phone.split('').every((char) => {return approvedRunnerPhoneNumberValues.indexOf(char) !== -1}))
-    && ((pace.length > 0 && pace.length < 5) && pace.split('').every((char) => {return approvedPaceValues.indexOf(char) !== -1}))) {
+    && ((pace.length > 0 && pace.length <= 5) && pace.split('').every((char) => {return approvedPaceValues.indexOf(char) !== -1}))) {
       axios.put('/runner', {runner: runner, phone: phone, pace: pace, runnerID: runnerID})
       .then((res) => {
         update();
