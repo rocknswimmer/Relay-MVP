@@ -46,7 +46,7 @@ const RunnerInfo = (props) => {
   const addRunner = () => {
     if(((runner.length > 0 && runner.length < 26) && runner.split('').every((char) => {return approvedRunnerNameValues.indexOf(char.toLowerCase()) !== -1}))
     && (phone.length === 10 && phone.split('').every((char) => {return approvedRunnerPhoneNumberValues.indexOf(char) !== -1}))
-    && ((pace.length > 0 && pace.length < 5) && pace.split('').every((char) => {return approvedPaceValues.indexOf(char) !== -1}))) {
+    && ((pace.length > 0 && pace.length <= 5) && pace.split('').every((char) => {return approvedPaceValues.indexOf(char) !== -1}))) {
       axios.post('/runner/new', {runner: runner, phone: phone, pace: pace})
       .then((res) => {
         update();
