@@ -3,7 +3,7 @@ Main goal of this 3 day MVP was go give my 2023 runners a better virtual relay e
 
 While working to improve the app for use after the original deadline, I decided to deploy a demo to be able to experience the app from all prespectives at the click of a button or two.
 
-Demo: [DEMO WEBSITE](http://52.21.107.140:3008/)
+Demo: [DEMO WEBSITE](http://44.197.151.146:3001/)
 
 Time Update Gif: recorded on phone since that is how my runners will experience it
 
