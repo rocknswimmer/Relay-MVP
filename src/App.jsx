@@ -7,6 +7,7 @@ import RunnersInfo from './runners.js';
 import Legs from './legs.js';
 import '../public/app.css';
 import TimeField from './time.js';
+import ImageContainer from './imageContainer.js';
 
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
@@ -15,6 +16,8 @@ const App = () => {
   const [completeLegs, setCompleteLegs] = useState([]);
   const [runner, setRunner] = useState(false);
   const [organizer, setOrganizer] = useState(false);
+
+  const secret = true;
 
   const runnerViewing = () => {
     setRunner(!runner);
@@ -87,9 +90,8 @@ const App = () => {
       <h1>Virtual Relay</h1>
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
 
-      {(runner || organizer) && <button onClick={displayRunnerInfo}>Runner Info</button>}
-      {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }}
-      update={() => { getRunnerInfo(); getLegInfo();}} organizer={organizer} />}
+      <ImageContainer progress={(completeLegs.length/(legs.length)) * 100} secret={secret} />
+
 
 
       <h2>Race Details</h2>
@@ -111,6 +113,10 @@ const App = () => {
       organizer={organizer} runnerView={runner} />
 
       {organizer && <TimeField legs={legs} update={() => { getLegInfo();}} runners={runners} />}
+
+      {(runner || organizer) && <button onClick={displayRunnerInfo}>Runner Info</button>}
+      {showRunners && <RunnersInfo runners={runners} close={() => { displayRunnerInfo(); }}
+      update={() => { getRunnerInfo(); getLegInfo();}} organizer={organizer} />}
 
       <h2>Who Is Veiwing?</h2>
       <button onClick={runnerViewing}>Runner</button>
