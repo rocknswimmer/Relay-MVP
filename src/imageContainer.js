@@ -4,11 +4,11 @@ import {useState, useEffect} from 'react';
 const ImageContainer = (props) => {
   const {progress, secret} = props;
   const urls = ["https://drive.lienuc.com/uc?id=1e_aB6_K2NDtrOlVDJNRXon-q0XNz26e7",
-  "https://lh3.googleusercontent.com/drive-viewer/AITFw-yy3v7tBIcggQR_5Sne1qKNvZQNnTzMIubB5AsJT5iHMNCEOUzg0DTlh14Ea_yHauJW44eZFb0cSVRMTR6s3UwMITEMfA=s1600",
-  "https://lh3.googleusercontent.com/drive-viewer/AITFw-yjJBJGQKCoVDlr5zO7_IuzptIvCnjxJ8TIzw1451vOlq9KRTo0AZURPuORc09bykf0-VrkuaOWEksWhQujhFCzLotYuA=s1600",
-  "https://lh3.googleusercontent.com/drive-viewer/AITFw-y3Y7jUz-XARl_a7iAH5uAyU32KwnsFj0Sah7a3TIz9JgOwrxnqWuLyy6NaS949WoXRYPbOnlgmUyzBxwYLeo_vA9FFBQ=s1600",
-  "https://lh3.googleusercontent.com/drive-viewer/AITFw-yd77sHlDh0fxoeZ3PsYpBKk84e1VvoV7dO6gcMJOF3wDdT8mHioXplaLcb2O8Vb5qCrVWn67Sn5TiWniXHG2Xp9G1NUQ=s1600",
-"https://lh3.googleusercontent.com/drive-viewer/AITFw-yNMKglxQwUPe7rbHV46APBCE2mDaWIO6imqT1ZBa5GZmeiKRX6G7oAsE6gb_s74wDk5OQUjmOBLVxDmCz8Gz6VqoXA=s1600"]
+  "https://drive.lienuc.com/uc?id=1Ks57u3D6xQIcGfggcIqNc1-jgyF9sTaw",
+  "https://drive.lienuc.com/uc?id=1Aj4_3PtWQCz4wEfIWUbCOAqbP_ulgTb7",
+  "https://drive.lienuc.com/uc?id=15Iu2dAtQlSHofam10K0e4mIszRC_fAV8",
+  "https://drive.lienuc.com/uc?id=1AbUhHF4TcXYRK12PooxZpOeIusM9s5Pp",
+"https://drive.lienuc.com/uc?id=12qxHIrzWtx6_5K8seoWy5RSkFqIXui4Y"]
   const alts = ["unlock", "DC", "Napa", "NWpassage", "delSol", "finish"]
   const descriptions = ["unlocked by running", "D.C., 2013", "Napa Valley, 2015", "North West Passage, 2017", "Del Sol, 2019", "2023 Done!"]
   const [photo, setPhoto] = useState(0)
