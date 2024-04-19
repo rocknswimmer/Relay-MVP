@@ -24,6 +24,10 @@ button {
   margin: 7px;
 }
 
+.images{
+  width: 700px;
+  height: 700px;
+}
 /* .flipswitch {
   position: relative;
   width: 150px;
@@ -113,6 +117,13 @@ button {
 @media screen and (min-width: 1200px) {
   #app {
     width: 65vw;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .images {
+    max-width: 300px;
+    max-height: 300px;
   }
 }
 

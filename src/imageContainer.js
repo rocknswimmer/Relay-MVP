@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 
 const ImageContainer = (props) => {
   const {progress, secret} = props;
-  const urls = ["https://lh3.googleusercontent.com/drive-viewer/AITFw-z7kQUuN8YvVCRMFkFys1VltDhwyJljRY1JMeEWddlTqTMgwEj5cAMrW6_jUdzcnAHzudIVGkFEupwwUrdG6MFtE5xy=s2560",
+  const urls = ["https://drive.lienuc.com/uc?id=1e_aB6_K2NDtrOlVDJNRXon-q0XNz26e7",
   "https://lh3.googleusercontent.com/drive-viewer/AITFw-yy3v7tBIcggQR_5Sne1qKNvZQNnTzMIubB5AsJT5iHMNCEOUzg0DTlh14Ea_yHauJW44eZFb0cSVRMTR6s3UwMITEMfA=s1600",
   "https://lh3.googleusercontent.com/drive-viewer/AITFw-yjJBJGQKCoVDlr5zO7_IuzptIvCnjxJ8TIzw1451vOlq9KRTo0AZURPuORc09bykf0-VrkuaOWEksWhQujhFCzLotYuA=s1600",
   "https://lh3.googleusercontent.com/drive-viewer/AITFw-y3Y7jUz-XARl_a7iAH5uAyU32KwnsFj0Sah7a3TIz9JgOwrxnqWuLyy6NaS949WoXRYPbOnlgmUyzBxwYLeo_vA9FFBQ=s1600",
@@ -35,10 +35,10 @@ const ImageContainer = (props) => {
   return (
     <div className="image-container">
        <h1>A Decade of Waileys!</h1>
-      {secret && <img className="images" src={urls[photo]} alt={alts[photo]}></img>}
+      {secret && <img crossorigin="anonymous" className="images" src={urls[photo]} alt={alts[photo]}></img>}
       {secret && <p>{descriptions[photo]}</p>}
 
-      {!secret && <img className="images" src={urls[0]} alt={alts[0]}></img>}
+      {!secret && <img crossorigin="anonymous" className="images" src={urls[0]} alt={alts[0]}></img>}
       {!secret && <p>{descriptions[0]}</p>}
     </div>
   )
