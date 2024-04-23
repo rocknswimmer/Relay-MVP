@@ -28,6 +28,12 @@ button {
   width: 500px;
   height: 500px;
 }
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 /* .flipswitch {
   position: relative;
   width: 150px;

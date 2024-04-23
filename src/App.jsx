@@ -16,6 +16,7 @@ const App = () => {
   const [completeLegs, setCompleteLegs] = useState([]);
   const [runner, setRunner] = useState(false);
   const [organizer, setOrganizer] = useState(false);
+  const [manualProgres, setManualProgres] = useState(0);
 
   const secret = true;
 
@@ -85,12 +86,23 @@ const App = () => {
       })
   };
 
+  const addProgress = () => {
+    if(manualProgres < 100 ){
+      setManualProgres(manualProgres + 10)
+    }
+  }
+
+  const subtractProgress = () => {
+    if(manualProgres > 0 ){
+      setManualProgres(manualProgres - 10)
+    }
+  }
   return (
     <div id="app">
       <h1>Virtual Relay</h1>
-      <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/legs.length) * 100} />
+      <ProgressBar bgcolor={"#ef6c00"} completed={Math.max(manualProgres,(completeLegs.length/legs.length) * 100)} />
 
-      <ImageContainer progress={(completeLegs.length/(legs.length)) * 100} secret={secret} />
+      <ImageContainer progress={Math.max(manualProgres,(completeLegs.length/legs.length) * 100)} secret={secret} />
 
 
 
