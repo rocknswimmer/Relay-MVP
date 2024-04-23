@@ -89,6 +89,18 @@ app.put('/leg', (req, res) => {
 
 });
 
+app.put('/clearProgress', (req, res) => {
+  pool.query('update legs set complete = false;', (err, data) => {
+    if(err) {
+      console.log('error clearing progress', err);
+      throw err;
+    }
+    res.send('cleared progress');
+  })
+
+
+});
+
 app.post('/leg/new', (req, res) => {
   const {runner, distance} = req.body;
   pool.query('insert into legs (runner, distance) values ($1, $2) returning *;', [runner, distance], (err, data) => {

@@ -8,6 +8,7 @@ import Legs from './legs.js';
 import '../public/app.css';
 import TimeField from './time.js';
 import ImageContainer from './imageContainer.js';
+import DemoControls from './demoControls.js';
 
 const App = () => {
   const [showRunners, setShowRunners] = useState(false);
@@ -90,17 +91,34 @@ const App = () => {
     if(manualProgres < 100 ){
       setManualProgres(manualProgres + 10)
     }
+    //console.log("add")
   }
 
   const subtractProgress = () => {
     if(manualProgres > 0 ){
       setManualProgres(manualProgres - 10)
     }
+    //console.log("subtract")
   }
+
+  const clearProgress = () => {
+    axios.put('/clearProgress')
+      .then((res) => {
+        getLegInfo();
+        setManualProgres(0);
+      })
+      .catch((err) => {
+        console.log('error clearing progress');
+      })
+  }
+
+
   return (
     <div id="app">
       <h1>Virtual Relay</h1>
       <ProgressBar bgcolor={"#ef6c00"} completed={Math.max(manualProgres,(completeLegs.length/legs.length) * 100)} />
+
+      <DemoControls progress={manualProgres} addProgress={() => {addProgress()}} subtractProgress={() =>{subtractProgress()}} clearProgress={() => {clearProgress()}}/>
 
       <ImageContainer progress={Math.max(manualProgres,(completeLegs.length/legs.length) * 100)} secret={secret} />
 
