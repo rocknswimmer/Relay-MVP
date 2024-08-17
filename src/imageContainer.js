@@ -3,12 +3,12 @@ import {useState, useEffect} from 'react';
 
 const ImageContainer = (props) => {
   const {progress, secret} = props;
-  const urls = ["https://drive.lienuc.com/uc?id=1e_aB6_K2NDtrOlVDJNRXon-q0XNz26e7",
-  "https://drive.lienuc.com/uc?id=1Ks57u3D6xQIcGfggcIqNc1-jgyF9sTaw",
-  "https://drive.lienuc.com/uc?id=1Aj4_3PtWQCz4wEfIWUbCOAqbP_ulgTb7",
-  "https://drive.lienuc.com/uc?id=15Iu2dAtQlSHofam10K0e4mIszRC_fAV8",
-  "https://drive.lienuc.com/uc?id=1AbUhHF4TcXYRK12PooxZpOeIusM9s5Pp",
-"https://drive.lienuc.com/uc?id=12qxHIrzWtx6_5K8seoWy5RSkFqIXui4Y"]
+  const urls = ["https://i.imgur.com/Qjn6EIr.jpg",
+  "https://i.imgur.com/vlw7LhD.jpg",
+  "https://i.imgur.com/6jx2GPG.jpg",
+  "https://i.imgur.com/fsZUtN2.jpg",
+  "https://i.imgur.com/3NkUpLA.jpg",
+"https://i.imgur.com/q0p5P10.jpg"]
   const alts = ["unlock", "DC", "Napa", "NWpassage", "delSol", "finish"]
   const descriptions = ["unlocked by running", "D.C., 2013", "Napa Valley, 2015", "North West Passage, 2017", "Del Sol, 2019", "2023 Done!"]
   const [photo, setPhoto] = useState(0)
