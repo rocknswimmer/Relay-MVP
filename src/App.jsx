@@ -15,7 +15,7 @@ const App = () => {
   const [legs2, setLegs2] = useState([]);
   const [completeLegs, setCompleteLegs] = useState([]);
   const [runner, setRunner] = useState(true);
-  const [organizer, setOrganizer] = useState(false);// adjust to input time
+  const [organizer, setOrganizer] = useState(true);// adjust to input time
   const [marking, setMarking] = useState(false);
   //const [pacific, setPacific] = useState(false);
   const possible = "1 2 3 4 5 6 7 8 9 10 11 12".split(" ");
@@ -34,7 +34,7 @@ const App = () => {
 
   useEffect(() => {
     getLeg1Info();
-    getLeg2Info();
+    //getLeg2Info();
     //getMapper();
   }, []);
 
@@ -205,11 +205,11 @@ const App = () => {
       <Legs legs={legs1} completed={(leg) => { updateStatus1(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
       organizer={organizer} runnerView={runner} secondHalf={false}  marking={marking}  />
 
-      <Accordion
+      {/* <Accordion
       title={'------------ NIGHT BREAK ------------'}
       content={<div><LoginField update={runnerViewing} /></div>}
       even={false}
-      />
+      /> */}
       <Legs legs={legs2} completed={(leg) => { updateStatus2(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
       organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} />
 
