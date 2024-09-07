@@ -214,7 +214,7 @@ const App = () => {
       organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} />
 
       {organizer && <TimeField legs={legs1} update={() => { getLeg1Info(); }} secondHalf={false} />}
-      {organizer && <TimeField legs={legs2} update={() => { getLeg2Info(); }} secondHalf={true} />}
+      {/* {organizer && <TimeField legs={legs2} update={() => { getLeg2Info(); }} secondHalf={true} />} */}
 
     </div>
     );
