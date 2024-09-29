@@ -35,10 +35,10 @@ const ImageContainer = (props) => {
   return (
     <div className="image-container">
        <h1>A Decade of Waileys!</h1>
-      {secret && <img crossorigin="anonymous" className="images" src={urls[photo]} alt={alts[photo]}></img>}
+      {secret && <img crossOrigin="anonymous" className="images" src={urls[photo]} alt={alts[photo]}></img>}
       {secret && <p>{descriptions[photo]}</p>}
 
-      {!secret && <img crossorigin="anonymous" className="images" src={urls[0]} alt={alts[0]}></img>}
+      {!secret && <img crossOrigin="anonymous" className="images" src={urls[0]} alt={alts[0]}></img>}
       {!secret && <p>{descriptions[0]}</p>}
     </div>
   )

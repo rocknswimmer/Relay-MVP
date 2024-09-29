@@ -9,18 +9,21 @@ import '../public/app.css';
 import TimeField from './time.js';
 import LoginField from './login.js';
 import ImageContainer from './imageContainer.js';
+import Modal from './modal.js';
 
 const App = () => {
   const [legs1, setLegs1] = useState([]);
   const [legs2, setLegs2] = useState([]);
   const [completeLegs, setCompleteLegs] = useState([]);
-  const [runner, setRunner] = useState(true);
-  const [organizer, setOrganizer] = useState(true);// adjust to input time
+  const [runner, setRunner] = useState(false);
+  const [organizer, setOrganizer] = useState(false);// adjust to input time
   const [marking, setMarking] = useState(false);
+  const [login, setLogin] = useState(false)
   //const [pacific, setPacific] = useState(false);
-  const possible = "1 2 3 4 5 6 7 8 9 10 11 12".split(" ");
+  const possible = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15".split(" ");
   const secret = false;
   const running = false;
+  const checkIn = true;
 
   const runnerViewing = () => {
     setRunner(false);
@@ -36,6 +39,11 @@ const App = () => {
     getLeg1Info();
     //getLeg2Info();
     //getMapper();
+    if(possible.indexOf(localStorage.runner) === -1){
+      setLogin(true)
+    } else {
+      setRunner(true)
+    }
   }, []);
 
   useEffect(() => {
@@ -215,6 +223,9 @@ const App = () => {
 
       {organizer && <TimeField legs={legs1} update={() => { getLeg1Info(); }} secondHalf={false} />}
       {/* {organizer && <TimeField legs={legs2} update={() => { getLeg2Info(); }} secondHalf={true} />} */}
+
+      {checkIn && (possible.indexOf(localStorage.runner) === -1) && login && <Modal close={()=>{setLogin(false)}} content={<div><LoginField update={runnerViewing} /></div>}/>}
+      {checkIn && <button onClick={()=>{setLogin(true);localStorage.runner="0"}}>Login</button>}
 
     </div>
     );
