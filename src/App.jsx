@@ -158,7 +158,7 @@ const App = () => {
     axios.put('/:leg/complete2', {'leg': leg})
       .then((res) => {
         getLeg1Info();
-        getLeg2Info();
+        // getLeg2Info();
       })
       .catch((err) => {
         console.log('error updating leg completion');
@@ -168,7 +168,8 @@ const App = () => {
     axios.put('/:leg/complete1', {'leg': leg})
       .then((res) => {
         getLeg1Info();
-        getLeg2Info();
+        // getLeg2Info();
+        location.reload();
       })
       .catch((err) => {
         console.log('error updating leg completion');
@@ -210,7 +211,7 @@ const App = () => {
       even={true}
       />
 
-      <Legs legs={legs1} completed={(leg) => { updateStatus1(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
+      <Legs legs={legs1} completed={(leg) => { updateStatus1(leg); }} update={() => {getLeg1Info();}}
       organizer={organizer} runnerView={runner} secondHalf={false}  marking={marking}  />
 
       {/* <Accordion
@@ -218,8 +219,8 @@ const App = () => {
       content={<div><LoginField update={runnerViewing} /></div>}
       even={false}
       /> */}
-      <Legs legs={legs2} completed={(leg) => { updateStatus2(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
-      organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} />
+      {/* <Legs legs={legs2} completed={(leg) => { updateStatus2(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
+      organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} /> */}
 
       {organizer && <TimeField legs={legs1} update={() => { getLeg1Info(); }} secondHalf={false} />}
       {/* {organizer && <TimeField legs={legs2} update={() => { getLeg2Info(); }} secondHalf={true} />} */}
