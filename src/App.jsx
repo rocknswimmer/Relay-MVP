@@ -202,7 +202,7 @@ const App = () => {
 
 
       {/* proper update on click for button and time displayed change */}
-      {runner && <button onClick={timeChange} >{`Switch to ${localStorage.timezone === "pacific" ? "Eastern" : "Pacific"}`}</button>}
+      {<button onClick={timeChange} >{`Switch to ${localStorage.timezone === "pacific" ? "Eastern" : "Pacific"}`}</button>}
       </div>
 
       <Accordion
