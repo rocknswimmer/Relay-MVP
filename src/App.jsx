@@ -22,7 +22,7 @@ const App = () => {
   const secret = false;
   const running = false;
   const checkIn = true;
-  const org = 3;//update for variable organizer number to avoid sql confusion
+  const org = "3";//update for variable organizer number to avoid sql confusion
 
   const runnerViewing = () => {
     setRunner(false);
@@ -104,7 +104,7 @@ const App = () => {
 
 
       <div className="button-container">
-      {(possible.indexOf(localStorage.runner) !== -1) && <button onClick={startMarking}>Mark Leg Complete!</button>}
+      {(possible.indexOf(localStorage.runner) !== -1) && <button onClick={startMarking}>Just Finished A Leg!</button>}
 
 
       {/* proper update on click for button and time displayed change */}
@@ -118,7 +118,7 @@ const App = () => {
       />
 
       <Legs legs={legs1} completed={(leg) => { updateStatus1(leg); }} update={() => {getLeg1Info();}}
-      organizer={organizer} runnerView={runner} secondHalf={false}  marking={marking}  />
+      organizer={organizer} runnerView={runner} secondHalf={false}  marking={marking} org={org}  />
 
 
       {organizer && <TimeField legs={legs1} update={() => { getLeg1Info(); }} secondHalf={false} />}

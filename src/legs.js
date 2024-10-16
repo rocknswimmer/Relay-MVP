@@ -5,7 +5,7 @@ import {useState} from 'react';
 import axios from 'axios';
 
 const Legs = (props) => {
-  const {legs, completed, update, organizer, runnerView, secondHalf, marking} = props;
+  const {legs, completed, update, organizer, runnerView, secondHalf, marking, org} = props;
   const [edit, setEdit] = useState(false);
   const [add, setAdd] = useState(false);
   const [diff, setDiff] = useState('');
@@ -60,7 +60,7 @@ const Legs = (props) => {
           even={secondHalf ? leg.id % 2 === 1 : leg.id % 2 === 0}
           complete={leg.complete}
           title={<div className="accordion-fake-title">
-            {(marking && (localStorage.runner === (leg.runner_id + "") || localStorage.runner === "3")) ?
+            {(marking && (localStorage.runner === (leg.runner_id + "") || localStorage.runner === org)) ?
           <button onClick={() => { completed(leg.id); }}>{leg.complete ? "undo early completion": `Mark leg ${(secondHalf ? leg.id + 18 : leg.id)} complete`}</button>
           :` Leg ${(secondHalf ? leg.id + 18 : leg.id)} | ${leg.runner.slice(0,3)} | ${localStorage.timezone === "pacific" ? leg.pacific_start : leg.start_time} | ${localStorage.timezone === "pacific" ? leg.pacific_end : leg.end_time} | ${leg.dif}`}
           </div>}
