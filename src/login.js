@@ -8,12 +8,6 @@ const LoginForm = (props) => {
   const allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
   const salt = 'salt123';
 
-  /*
-  once input sanitized, maybe runner number is from a drop down instead of input
-  localStorage.runner = runner
-  add conditional for marking that leg.runner = runner
-
-  */
   String.prototype.hashCode = function () {
     var hash = 0;
     for (var i = 0; i < this.length; i++) {

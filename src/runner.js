@@ -9,7 +9,7 @@ const RunnerInfo = (props) => {
   const [phone, setPhone] = useState('');
   const [pace, setPace] = useState('');
   const approvedRunnerPhoneNumberValues = '1234567890'.split('');
-  const approvedRunnerNameValues = 'abcdefghijklmnopqrstuvwxyz 1234567890'.split('');// since demo names are and 2 had to include numbers for consistency
+  const approvedRunnerNameValues = 'abcdefghijklmnopqrstuvwxyz 1234567890'.split('');
   const approvedPaceValues = '1234567890.'.split('');
 
   const onRunner = (e) => {

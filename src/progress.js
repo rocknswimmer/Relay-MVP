@@ -16,7 +16,6 @@ const ProgressBar = (props) => {
     width: '100%',
     backgroundColor: 'inherit',
     borderRadius: 50,
-    //marginBottom: '20px'
   }
 
   const fillerStyles = {
@@ -36,15 +35,12 @@ const ProgressBar = (props) => {
     borderRadius: 'inherit',
     transition: 'width 1s ease-in-out',
     textAlign: 'right',
-    //overflow: 'hidden'
-
   }
 
   const labelStyles = {
     padding: 5,
     color: 'white',
     fontWeight: 'bold',
-    //width: 'max-content',
   }
 
   const gifStyle = {

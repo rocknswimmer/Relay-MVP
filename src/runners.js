@@ -30,7 +30,6 @@ const RunnersInfo = (props) => {
                 <div>
                 <h2>{runner.phone}</h2>
                 <h2>Pace: {runner.pace}</h2>
-                {/* <h2>{`${runner.pace} minutes per mile`}</h2> */}
                 {organizer && <button onClick={editRunner}>Edit Runner</button>}
                 {edit && <RunnerInfo close={ () => { editRunner(); }} edit={edit} update={update} runnerID={runner.id}/>}
                 </div>
