@@ -185,7 +185,7 @@ const App = () => {
 
   return (
     <div id="app">
-      <h1>Waileys 2023</h1>
+      <h1>Waileys 2025</h1>
       {running && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={true} />}
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={false} />
 
