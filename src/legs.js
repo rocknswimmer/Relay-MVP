@@ -72,6 +72,11 @@ const Legs = (props) => {
           content={
             <div>
               <h1>{leg.runner}</h1>
+
+
+              {/* durratoion swap here? */}
+
+
               <h2>{`${leg.distance} miles`}</h2>
               <h2>Pace: {leg.pace}</h2>
               {organizer && <div>
