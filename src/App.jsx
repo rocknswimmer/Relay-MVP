@@ -16,7 +16,7 @@ const App = () => {
   const [legs2, setLegs2] = useState([]);
   const [completeLegs, setCompleteLegs] = useState([]);
   const [runner, setRunner] = useState(false);
-  const [organizer, setOrganizer] = useState(false);// adjust to input time
+  const [organizer, setOrganizer] = useState(true);// adjust to input time
   const [marking, setMarking] = useState(false);
   const [login, setLogin] = useState(false)
   //const [pacific, setPacific] = useState(false);
