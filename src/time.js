@@ -24,8 +24,10 @@ const TimeField = (props) => {
       let currEnd = 'TBD'
       let currLeg = 1;
       let convertedStart = '';
+      let mountainStart = '';
       let convertedStartPacific = '';
       let convertedEnd = '';
+      let mountainEnd = '';
       let convertedEndPacific = '';
 
       let updatedLegs = legs.map((leg, i) => {
@@ -35,7 +37,7 @@ const TimeField = (props) => {
 
         ///in cur legs math.floor add (distance === 90 ? 90*60000: )
 
-        currLeg = Math.floor(distance === 90 ? 90*60000:leg.distance * leg.pace * 60000);// distance * pace/mile in mins * 60 sec * millisecs
+        currLeg = Math.floor(leg.distance === 90 ? 90*60000:leg.distance * leg.pace * 60000);// distance * pace/mile in mins * 60 sec * millisecs
         currEnd = currStart + currLeg;
         previous = currEnd;
 
@@ -48,10 +50,11 @@ const TimeField = (props) => {
         mountainEnd = new Intl.DateTimeFormat('en-US', { timeZone: "America/Denver", weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currEnd);
         convertedEndPacific = new Intl.DateTimeFormat('en-US', { timeZone: "America/Los_Angeles", weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currEnd);
 
+
         if(secondHalf){
-          return axios.put('/time2', { start_time: convertedStart, end_time: convertedEnd, legID: leg.id, pacific_start: convertedStartPacific, pacific_end: convertedEndPacific})
+          return axios.put('/time2', { start_time: convertedStart, end_time: convertedEnd, legID: leg.id, pacific_start: convertedStartPacific, pacific_end: convertedEndPacific, mountain_start: mountainStart, mountain_end, mountainEnd})
         }
-        return axios.put('/time1', { start_time: convertedStart, end_time: convertedEnd, legID: leg.id, pacific_start: convertedStartPacific, pacific_end: convertedEndPacific})
+        return axios.put('/time1', { start_time: convertedStart, end_time: convertedEnd, legID: leg.id, pacific_start: convertedStartPacific, pacific_end: convertedEndPacific, mountain_start: mountainStart, mountain_end: mountainEnd})
 
       });
 
