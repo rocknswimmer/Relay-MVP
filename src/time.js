@@ -35,15 +35,17 @@ const TimeField = (props) => {
 
         ///in cur legs math.floor add (distance === 90 ? 90*60000: )
 
-        currLeg = Math.floor(leg.distance * leg.pace * 60000);// distance * pace/mile in mins * 60 sec * millisecs
+        currLeg = Math.floor(distance === 90 ? 90*60000:leg.distance * leg.pace * 60000);// distance * pace/mile in mins * 60 sec * millisecs
         currEnd = currStart + currLeg;
         previous = currEnd;
 
         // console.log(new Intl.DateTimeFormat('en-US', {dateStyle: 'full', timeStyle: 'long', timeZone:'America/New_York'}).format(currStart));
 
         convertedStart = new Intl.DateTimeFormat('en-US', { weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currStart);
+        mountainStart =  new Intl.DateTimeFormat('en-US', { timeZone: "America/Denver", weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currStart);
         convertedStartPacific = new Intl.DateTimeFormat('en-US', { timeZone: "America/Los_Angeles", weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currStart);
         convertedEnd = new Intl.DateTimeFormat('en-US', { weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currEnd);
+        mountainEnd = new Intl.DateTimeFormat('en-US', { timeZone: "America/Denver", weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currEnd);
         convertedEndPacific = new Intl.DateTimeFormat('en-US', { timeZone: "America/Los_Angeles", weekday: 'short', hour: 'numeric', minute: 'numeric' }).format(currEnd);
 
         if(secondHalf){

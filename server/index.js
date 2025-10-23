@@ -166,9 +166,9 @@ app.put('/:leg/complete2', (req, res) => {
 app.put('/time1', (req, res) => {
   // console.log(req.body);
   // res.send(req.body);
-  const {start_time, end_time, pacific_start, pacific_end, legID} = req.body;
+  const {start_time, end_time, mountain_start, mountain_end, pacific_start, pacific_end, legID} = req.body;
 
-  pool.query('update legs1 set start_time = $1, end_time = $2, pacific_start = $3, pacific_end = $4 where id = $5 returning *;', [start_time, end_time, pacific_start, pacific_end, legID], (err, data) => {
+  pool.query('update legs1 set start_time = $1, end_time = $2, mountain_start = $3, mountain_end = $4, pacific_start = $5, pacific_end = $6 where id = $7 returning *;', [start_time, end_time, mountain_start, mountain_end, pacific_start, pacific_end, legID], (err, data) => {
     if (err) {
       console.log('error updating leg time info: ', err, pacific_start);
       //throw err;
