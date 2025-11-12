@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/runners', (req, res) => {
-  pool.query('select * from runners', (err, data) => {
+  pool.query('select * from runners1', (err, data) => {
     if (err) {
       console.log('error retrieving runners from db: ', err);
       //throw err;
@@ -41,7 +41,7 @@ app.get('/runners', (req, res) => {
 
 
 app.get('/legs1', (req, res) => {
-  pool.query('select id, (select runner from runners where id = legs1.runner) as runner, (select pace from runners where id = legs1.runner) as pace, distance, complete, start_time, end_time, pacific_start, pacific_end, dif, runner as runner_id from legs1', (err, data) => {
+  pool.query('select id, (select runner from runners1 where id = legs1.runner) as runner, (select pace from runners1 where id = legs1.runner) as pace, distance, complete, start_time, end_time, pacific_start, pacific_end, dif, runner as runner_id from legs1', (err, data) => {
     if (err) {
       console.log('error retrieving legs from db: ', err);
       //throw err;
