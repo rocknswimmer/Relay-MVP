@@ -20,7 +20,7 @@ const App = () => {
   const [marking, setMarking] = useState(false);
   const [login, setLogin] = useState(false)
   //const [pacific, setPacific] = useState(false);
-  const possible = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15".split(" ");
+  const possible = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20".split(" ");
   const secret = false;
   const running = false;
   const checkIn = true;
@@ -57,6 +57,10 @@ const App = () => {
 
   const startMarking = () => {
     setMarking(!marking);
+    if(localStorage.runner !== "1"){
+      let filtered = legs1.filter(x => x.runner_id+"" === localStorage.runner)
+      setLegs1(filtered)
+    }
   };
 
   const getLeg1Info = () => {

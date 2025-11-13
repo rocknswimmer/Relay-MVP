@@ -44,7 +44,8 @@ const LoginForm = (props) => {
   };
 
   const onLogin = () => {
-    if(pass.hashCode() === -458636246){
+    //console.log(pass.hashCode()) // to get value
+    if(pass.hashCode() === 2138526084){
       localStorage.runner = runner;
       update();
       location.reload();
