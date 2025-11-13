@@ -66,7 +66,7 @@ const Legs = (props) => {
           title={<div className="accordion-fake-title">
             {(marking && (localStorage.runner === (leg.runner_id + "") || localStorage.runner === "1")) ?
           <button onClick={() => { completed(leg.id); }}>{leg.complete ? "undo early completion": `Mark leg ${(secondHalf ? leg.id + 18 : leg.id)} complete`}</button>
-          :` Leg ${(secondHalf ? leg.id + 18 : leg.id)} | ${leg.runner.slice(0,3)} | ${localStorage.timezone === "pacific" ? leg.pacific_start : leg.start_time} | ${localStorage.timezone === "pacific" ? leg.pacific_end : leg.end_time} | ${leg.dif}`}
+          :` Leg ${(secondHalf ? leg.id + 18 : leg.id)} | ${leg.runner.slice(0,3)} | ${localStorage.timezone === "Pacific" ? leg.pacific_start : localStorage.timezone === "Eastern" ?leg.start_time : leg.mountain_start} | ${localStorage.timezone === "Pacific" ? leg.pacific_end : localStorage.timezone === "Eastern" ?leg.end_time : leg.mountain_end} | ${leg.dif}`}
           </div>}
 
           content={

@@ -19,6 +19,7 @@ const App = () => {
   const [organizer, setOrganizer] = useState(true);// adjust to input time
   const [marking, setMarking] = useState(false);
   const [login, setLogin] = useState(false)
+  const [changeTime, setChangeTime] = useState(false);
   //const [pacific, setPacific] = useState(false);
   const possible = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20".split(" ");
   const secret = false;
@@ -180,8 +181,8 @@ const App = () => {
       })
   };
 
-  const timeChange = () => {
-    localStorage.timezone = localStorage.timezone === "pacific" ? "" : "pacific";
+  const timeChange = (zone) => {
+    localStorage.timezone = zone
     //setTimeout(() => {localStorage.timezone = localStorage.timezone === "pacific" ? "" : "pacific";}, "1000");
     runnerViewing();
 
@@ -190,15 +191,16 @@ const App = () => {
   return (
     <div id="app">
       <h1>Waileys 2025</h1>
+      <h2>W8 : THE OCTO</h2>
       {running && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={true} />}
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={false} />
 
       {/* photos here  */}
-      <ImageContainer progress={(completeLegs.length/(legs1.length + legs2.length)) * 100} secret={secret} />
+      {/* <ImageContainer progress={(completeLegs.length/(legs1.length + legs2.length)) * 100} secret={secret} /> */}
 
 
-      <h2>Race Details</h2>
-      <h3>{localStorage.timezone === "pacific" ? "Pacific Time" : "Eastern Time"}</h3>
+      {/* <h2>Race Details</h2> */}
+      <h3>{localStorage.timezone + " Time"}</h3>
 
 
       <div className="button-container">
@@ -206,7 +208,15 @@ const App = () => {
 
 
       {/* proper update on click for button and time displayed change */}
-      {<button onClick={timeChange} >{`Switch to ${localStorage.timezone === "pacific" ? "Eastern" : "Pacific"}`}</button>}
+      {<button onClick={() => {setChangeTime(true)}} >Change Time Zone</button>}
+      {changeTime && <Modal close={()=>{setChangeTime(false)}} content={<div>
+        <h1>Choose A Timezone</h1>
+        <button onClick={() => {timeChange("Eastern");setChangeTime(false)}}>Eastern</button>
+        <br/>
+        <button onClick={() => {timeChange("Mountain");setChangeTime(false)}}>Mountain</button>
+        <br/>
+        <button onClick={() => {timeChange("Pacific");setChangeTime(false)}}>Pacific</button>
+      </div>}/>}
       </div>
 
       <Accordion

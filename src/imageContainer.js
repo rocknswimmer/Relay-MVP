@@ -34,7 +34,7 @@ const ImageContainer = (props) => {
 
   return (
     <div className="image-container">
-       <h1>A Decade of Waileys!</h1>
+       <h1>W8 : THE OCTO</h1>
       {secret && <img crossOrigin="anonymous" className="images" src={urls[photo]} alt={alts[photo]}></img>}
       {secret && <p>{descriptions[photo]}</p>}
 
