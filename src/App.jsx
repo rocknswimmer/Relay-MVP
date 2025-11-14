@@ -191,7 +191,7 @@ const App = () => {
   return (
     <div id="app">
       <h1>Waileys 2025</h1>
-      <h2>W8 : THE OCTO</h2>
+      <h3>W8 : THE OCTO</h3>
       {running && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={true} />}
       <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={false} />
 
@@ -200,7 +200,7 @@ const App = () => {
 
 
       {/* <h2>Race Details</h2> */}
-      <h3>{localStorage.timezone + " Time"}</h3>
+      <h3>{(localStorage.timezone !== undefined? localStorage.timezone: "Eastern")  + " Time"}</h3>
 
 
       <div className="button-container">
