@@ -58,10 +58,11 @@ const App = () => {
 
   const startMarking = () => {
     setMarking(!marking);
-    if(localStorage.runner !== "1"){
+    if(!marking && localStorage.runner !== "1"){//why not marking???
       let filtered = legs1.filter(x => x.runner_id+"" === localStorage.runner)
       setLegs1(filtered)
-    }
+    } else{getLeg1Info()}
+
   };
 
   const getLeg1Info = () => {
@@ -193,7 +194,7 @@ const App = () => {
       <h1>Waileys 2025</h1>
       <h3>W8 : THE OCTO</h3>
       {running && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={true} />}
-      <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={false} />
+      {!marking && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={false} />}
 
       {/* photos here  */}
       {/* <ImageContainer progress={(completeLegs.length/(legs1.length + legs2.length)) * 100} secret={secret} /> */}
