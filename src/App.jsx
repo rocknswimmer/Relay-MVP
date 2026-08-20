@@ -24,7 +24,7 @@ const App = () => {
   const possible = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20".split(" ");
   const secret = false;
   const running = false;
-  const checkIn = true;
+  const checkIn = false;
 
   const runnerViewing = () => {
     setRunner(false);
