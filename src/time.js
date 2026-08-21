@@ -37,7 +37,7 @@ const TimeField = (props) => {
 
         ///in cur legs math.floor add (distance === 90 ? 90*60000: )
 
-        currLeg = Math.floor(leg.distance === 90 ? 90*60000:leg.distance * leg.pace * 60000);// distance * pace/mile in mins * 60 sec * millisecs
+        currLeg = Math.floor(leg.activity === "DURATION" ? leg.distance*60000:leg.distance * leg.pace * 60000);// distance * pace/mile in mins * 60 sec * millisecs
         currEnd = currStart + currLeg;
         previous = currEnd;
 

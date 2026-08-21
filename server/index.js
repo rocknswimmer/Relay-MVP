@@ -41,7 +41,7 @@ app.get('/runners', (req, res) => {
 
 
 app.get('/legs1', (req, res) => {
-  pool.query('select id, (select runner from runners1 where id = legs1.runner) as runner, (select pace from runners1 where id = legs1.runner) as pace, distance, complete, start_time, end_time, mountain_start, mountain_end, pacific_start, pacific_end, dif, runner as runner_id from legs1', (err, data) => {
+  pool.query('select id, (select runner from runners1 where id = legs1.runner) as runner, (select pace from runners1 where id = legs1.runner) as pace, distance, activity, complete, start_time, end_time, mountain_start, mountain_end, pacific_start, pacific_end, dif, runner as runner_id from legs1', (err, data) => {
     if (err) {
       console.log('error retrieving legs from db: ', err);
       //throw err;
