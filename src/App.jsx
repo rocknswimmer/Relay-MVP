@@ -191,8 +191,8 @@ const App = () => {
 
   return (
     <div id="app">
-      <h1>Waileys 2025</h1>
-      <h3>W8 : THE OCTO</h3>
+      <h1>Waileys 2026</h1>
+      {/* <h3>W8 : THE OCTO</h3> */}
       {running && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={true} />}
       {!marking && <ProgressBar bgcolor={"#ef6c00"} completed={(completeLegs.length/(legs1.length + legs2.length)) * 100} gif={false} />}
 
