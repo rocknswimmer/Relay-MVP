@@ -78,8 +78,8 @@ const Legs = (props) => {
               {/* durratoion swap here? */}
 
 
-              <h2>{`${leg.distance} miles`}</h2>
-              <h2>Pace: {leg.pace}</h2>
+              <h2>{`${leg.distance} ${leg.activity==='DISTANCE'?'miles':'minutes'}`}</h2>
+              {leg.activity==='DISTANCE' && <h2>Pace: {leg.pace}</h2>}
               {organizer && <div>
                 <button onClick={editLeg}>Edit Leg</button>
                 {/* <button onClick={} >Delete Leg</button> */}
