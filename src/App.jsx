@@ -18,13 +18,13 @@ const App = () => {
   const [runner, setRunner] = useState(false);
   const [organizer, setOrganizer] = useState(true);// adjust to input time
   const [marking, setMarking] = useState(false);
-  const [login, setLogin] = useState(false)
+  const [login, setLogin] = useState(false);
   const [changeTime, setChangeTime] = useState(false);
   //const [pacific, setPacific] = useState(false);
   const possible = "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20".split(" ");
   const secret = false;
-  const running = false;
-  const checkIn = false;
+  const running = true;
+  const checkIn = true;
 
   const runnerViewing = () => {
     setRunner(false);
@@ -237,11 +237,11 @@ const App = () => {
       {/* <Legs legs={legs2} completed={(leg) => { updateStatus2(leg); }} update={() => {getLeg1Info(); getLeg2Info();}}
       organizer={organizer} runnerView={runner} secondHalf={true} marking={marking} /> */}
 
-      {organizer && <TimeField legs={legs1} update={() => { getLeg1Info(); }} secondHalf={false} />}
+      {organizer && localStorage.runner === "1" && <TimeField legs={legs1} update={() => { getLeg1Info(); }} secondHalf={false} />}
       {/* {organizer && <TimeField legs={legs2} update={() => { getLeg2Info(); }} secondHalf={true} />} */}
 
       {checkIn && (possible.indexOf(localStorage.runner) === -1) && login && <Modal close={()=>{setLogin(false)}} content={<div><LoginField update={runnerViewing} /></div>}/>}
-      {checkIn && <button onClick={()=>{setLogin(true);localStorage.runner="0"}}>Login</button>}
+      {checkIn && <button onClick={()=>{setLogin(true);localStorage.runner="0"}}>{possible.indexOf(localStorage.runner) === -1?"Login":"Logout"}</button>}
 
     </div>
     );

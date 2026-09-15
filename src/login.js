@@ -44,8 +44,17 @@ const LoginForm = (props) => {
   };
 
   const onLogin = () => {
-    //console.log(pass.hashCode()) // to get value
-    if(pass.hashCode() === 2138526084){
+    console.log(pass.hashCode()) // to get value
+    if(runner==='1'){
+      if(pass.hashCode() === 794056828){
+        localStorage.runner = runner;
+      update();
+      location.reload();
+      }else{
+        alert('Incorrect UserName, double check the roster and try again, or reach out for help')
+      }
+
+    } else if(pass.hashCode() === -193271478){
       localStorage.runner = runner;
       update();
       location.reload();
