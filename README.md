@@ -3,8 +3,6 @@ Main goal of this 3 day MVP was go give my 2023 runners a better virtual relay e
 
 While working to improve the app for use after the original deadline, I decided to deploy a demo to be able to experience the app from all prespectives at the click of a button or two.
 
-Demo: [DEMO WEBSITE](http://44.197.151.146:3001/)
-
 Time Update Gif: Check out how the promise chain updates the database when you supply a start time
 
 https://user-images.githubusercontent.com/108627643/234087039-0dac090c-1f49-456c-b1c1-6a6ba56d6998.mp4
